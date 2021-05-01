@@ -2,6 +2,7 @@ package com.dao;
 
 import com.pojo.Answer;
 import com.pojo.Question;
+import com.pojo.User;
 
 import java.util.List;
 
@@ -36,4 +37,7 @@ public interface CommunityDao {
 
     //添加回答
     public int addAnswer(String name,Answer answer);
+
+    //根据searchName查询当前页下的问题
+    List<Question> queryForPageItemsBySearchName(int begin, int pageSize, String searchName);
 }

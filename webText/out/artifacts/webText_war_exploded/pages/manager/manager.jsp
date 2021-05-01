@@ -118,6 +118,14 @@
             <div role="tabpanel" class="tab-pane active" id="sour">
                 <div class="check-div form-inline">
                     <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addSource">新建问题</button>
+                    <div class="col-xs-4">
+                        <form action="managerServlet">
+                            <input type="hidden" name="action" value="searchQuestion">
+                            <input type="text" class="form-control input-sm" placeholder="输入要查询的问题名"
+                                   name="searchName">
+                            <button class="btn btn-white btn-xs " type="submit">查 询</button>
+                        </form>
+                    </div>
                 </div>
                 <div class="data-div">
                     <div class="row tableHeader">
@@ -234,13 +242,13 @@
             <!--用户管理模块-->
             <div role="tabpanel" class="tab-pane" id="user">
                 <div class="check-div form-inline">
-                    <div class="col-xs-3">
-                        <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addUser">添加用户
-                        </button>
-                    </div>
                     <div class="col-xs-4">
-                        <input type="text" class="form-control input-sm" placeholder="输入文字搜索">
-                        <button class="btn btn-white btn-xs ">查 询</button>
+                        <form action="managerServlet">
+                            <input type="hidden" name="action" value="searchUsername">
+                            <input type="text" class="form-control input-sm" placeholder="输入要查询的用户名"
+                                   name="searchName">
+                            <button class="btn btn-white btn-xs " type="submit">查 询</button>
+                        </form>
                     </div>
                 </div>
                 <div class="data-div">
@@ -290,8 +298,6 @@
                     <!--页码块-->
                     <%@include file="/pages/common/page_manager_nav.jsp" %>
                 </div>
-
-
             </div>
         </div>
     </div>

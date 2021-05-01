@@ -23,4 +23,6 @@ public interface CommunityService {
     public List<Question> queryQuestions();
 
     public Page<Question> page(int pageNo, int pageSize);
+
+    public Page<Question> pageByQuestion(int pageNo, int pageSize,String searchName);
 }

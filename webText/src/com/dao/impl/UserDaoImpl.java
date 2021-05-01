@@ -28,7 +28,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     @Override
     public int updateUser(User user) {
         String sql = "update t_user set `username`=?,`password`=?,`email`=? where id = ?";
-        return update(sql,user.getUsername(),user.getPassword(),user.getEmail(),user.getId());
+        return update(sql, user.getUsername(), user.getPassword(), user.getEmail(), user.getId());
     }
 
     @Override
@@ -47,6 +47,12 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     @Override
     public int deleteUserById(Integer id) {
         String sql = "delete from t_user where id = ?";
-        return update(sql,id);
+        return update(sql, id);
+    }
+
+    @Override
+    public List<User> queryForPageItemsBySearchName(int begin, int pageSize, String searchName) {
+        String sql = "select * from t_user where id in ( select `id` from t_user where username like '%' ? '%' ) limit ? , ?";
+        return queryForList(User.class, sql, searchName,begin,pageSize);
     }
 }

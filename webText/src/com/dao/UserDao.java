@@ -42,4 +42,7 @@ public interface UserDao {
 
     //删除一个用户
     public int deleteUserById(Integer id);
+
+    //根据searchName查询当前页下的用户
+    List<User> queryForPageItemsBySearchName(int begin, int pageSize, String searchName);
 }

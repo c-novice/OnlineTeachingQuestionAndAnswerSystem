@@ -159,4 +159,53 @@ public class ManagerServlet extends BaseServlet {
         resp.sendRedirect(req.getContextPath() + "/managerServlet?action=page");
     }
 
+    /**
+     * 根据用户名查询
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void searchUsername(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1 获取请求的参数
+        String searchName = req.getParameter("searchName");
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"), 1);
+        int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE / 2);
+        //2 调用CommunityServiceService.page(pageNo，pageSize)：Page对象
+        Page<Question> pageManager = communityService.page(pageNo, pageSize);
+        Page<User> pageUsers = userService.pageByUsername(pageNo, pageSize, searchName);
+        pageManager.setUrl("managerServlet?action=page");
+        //3 保存Page对象到Request域中，兼具初始化的功能
+        req.setAttribute("pageManager", pageManager);
+        req.setAttribute("pageUsers", pageUsers);
+        req.setAttribute("searchName", searchName);
+        //4 请求转发
+        req.getRequestDispatcher("/pages/manager/manager.jsp").forward(req, resp);
+    }
+
+    /**
+     * 根据问题名查询
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void searchQuestion(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1 获取请求的参数
+        String searchName = req.getParameter("searchName");
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"), 1);
+        int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE / 2);
+        //2 调用CommunityServiceService.page(pageNo，pageSize)：Page对象
+        Page<Question> pageManager = communityService.pageByQuestion(pageNo, pageSize, searchName);
+        Page<User> pageUsers = userService.page(pageNo, pageSize);
+        pageManager.setUrl("managerServlet?action=page");
+        //3 保存Page对象到Request域中，兼具初始化的功能
+        req.setAttribute("pageManager", pageManager);
+        req.setAttribute("pageUsers", pageUsers);
+        req.setAttribute("searchName", searchName);
+        //4 请求转发
+        req.getRequestDispatcher("/pages/manager/manager.jsp").forward(req, resp);
+    }
 }

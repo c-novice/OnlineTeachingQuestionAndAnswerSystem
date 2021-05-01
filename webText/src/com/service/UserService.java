@@ -36,4 +36,6 @@ public interface UserService {
     //删除一条用户
     public void deleteUserById(Integer id);
 
+    //查询用户名
+    Page<User> pageByUsername(int pageNo, int pageSize, String searchName);
 }

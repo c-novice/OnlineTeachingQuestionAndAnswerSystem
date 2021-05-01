@@ -5,6 +5,7 @@ import com.dao.impl.CommunityDaoImpl;
 import com.pojo.Answer;
 import com.pojo.Page;
 import com.pojo.Question;
+import com.pojo.User;
 import com.service.CommunityService;
 
 import java.util.List;
@@ -75,6 +76,42 @@ public class CommunityServiceImpl implements CommunityService {
 
         // 求当前页数据
         List<Question> items = communityDao.queryForPageItems(begin, pageSize);
+
+        for (Question item : items) {
+            item.setAnswers(communityDao.queryAnswerByName(item.getName()));
+        }
+
+        // 设置当前页数据
+        page.setItems(items);
+        return page;
+    }
+
+    @Override
+    public Page<Question> pageByQuestion(int pageNo, int pageSize, String searchName) {
+        Page<Question> page = new Page<Question>();
+
+        // 设置每页显示的数量
+        page.setPageSize(pageSize);
+        // 求总记录数
+        Integer pageTotalCount = communityDao.queryForPageTotalCount();
+        // 设置总记录数
+        page.setPageTotalCount(pageTotalCount);
+        // 求总页码
+        Integer pageTotal = pageTotalCount / pageSize;
+        if (pageTotalCount % pageSize > 0) {
+            pageTotal += 1;
+        }
+        // 设置总页码
+        page.setPageTotal(pageTotal);
+
+        // 设置当前页码
+        page.setPageNo(pageNo);
+
+        // 求当前页数据的开始索引
+        int begin = (page.getPageNo() - 1) * pageSize;
+
+        // 求当前页数据
+        List<Question> items = communityDao.queryForPageItemsBySearchName(begin, pageSize, searchName);
 
         for (Question item : items) {
             item.setAnswers(communityDao.queryAnswerByName(item.getName()));

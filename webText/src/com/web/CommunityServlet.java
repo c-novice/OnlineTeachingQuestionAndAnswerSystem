@@ -3,7 +3,6 @@ package com.web;
 import com.pojo.Answer;
 import com.pojo.Page;
 import com.pojo.Question;
-import com.pojo.User;
 import com.service.CommunityService;
 import com.service.impl.CommunityServiceImpl;
 import com.utils.WebUtils;
