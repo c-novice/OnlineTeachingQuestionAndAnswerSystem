@@ -42,11 +42,6 @@
                 return confirm("你确定要删除这个问题吗?");
             });
         });
-        $(function () {
-            $("button.btn-success").click(function () {
-                return confirm("你确定要修改这个问题吗?")
-            });
-        });
     </script>
     <script>
         $(function () {
@@ -61,7 +56,7 @@
                     $(this).attr("src", items);
                 });
                 var attrObj = $(this).find("img").attr("src");
-                ;
+
                 attrObj = attrObj.replace("_grey.png", ".png");
                 $(this).find("img").attr("src", attrObj);
             });
@@ -155,17 +150,12 @@
                                             ${question.id}
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <input class="input_question" name="changeName" type="text"
-                                               value="${question.name}">
+                                            ${question.name}
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                                        <input class="input_answer" name="changeAnswer" type="text"
-                                               value="${requestScope.context}">
+                                            ${requestScope.context}
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                        <button class="btn btn-success btn-xs" type="submit">
-                                            修改
-                                        </button>
                                         <a href="managerServlet?action=deleteQuestion&deleteAnswer=&deleteQuestion=${question.id}&deleteName=${question.name}">
                                             <button class="btn btn-danger btn-xs" type="button">
                                                 删除
@@ -295,8 +285,6 @@
                         </c:forEach>
 
                     </div>
-                    <!--页码块-->
-                    <%@include file="/pages/common/page_manager_nav.jsp" %>
                 </div>
             </div>
         </div>

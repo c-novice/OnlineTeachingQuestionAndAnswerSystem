@@ -18,8 +18,8 @@ import java.util.Map;
 
 public class ManagerServlet extends BaseServlet {
 
-    private CommunityService communityService = new CommunityServiceImpl();
-    private UserService userService = new UserServiceImpl();
+    private final CommunityService communityService = new CommunityServiceImpl();
+    private final UserService userService = new UserServiceImpl();
 
 
     /**
@@ -36,7 +36,7 @@ public class ManagerServlet extends BaseServlet {
         int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE / 2);
         //2 调用CommunityServiceService.page(pageNo，pageSize)：Page对象
         Page<Question> pageManager = communityService.page(pageNo, pageSize);
-        Page<User> pageUsers = userService.page(pageNo, pageSize);
+        Page<User> pageUsers = userService.page(pageNo, Integer.MAX_VALUE);
         pageManager.setUrl("managerServlet?action=page");
         //3 保存Page对象到Request域中，兼具初始化的功能
         req.setAttribute("pageManager", pageManager);
@@ -174,8 +174,8 @@ public class ManagerServlet extends BaseServlet {
         int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE / 2);
         //2 调用CommunityServiceService.page(pageNo，pageSize)：Page对象
         Page<Question> pageManager = communityService.page(pageNo, pageSize);
-        Page<User> pageUsers = userService.pageByUsername(pageNo, pageSize, searchName);
-        pageManager.setUrl("managerServlet?action=page");
+        Page<User> pageUsers = userService.pageByUsername(pageNo, Integer.MAX_VALUE, searchName);
+        pageManager.setUrl("managerServlet?action=searchUsername&searchName"+searchName);
         //3 保存Page对象到Request域中，兼具初始化的功能
         req.setAttribute("pageManager", pageManager);
         req.setAttribute("pageUsers", pageUsers);
@@ -199,8 +199,8 @@ public class ManagerServlet extends BaseServlet {
         int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE / 2);
         //2 调用CommunityServiceService.page(pageNo，pageSize)：Page对象
         Page<Question> pageManager = communityService.pageByQuestion(pageNo, pageSize, searchName);
-        Page<User> pageUsers = userService.page(pageNo, pageSize);
-        pageManager.setUrl("managerServlet?action=page");
+        Page<User> pageUsers = userService.page(pageNo, Integer.MAX_VALUE);
+        pageManager.setUrl("managerServlet?action=searchQuestion&searchName="+searchName);
         //3 保存Page对象到Request域中，兼具初始化的功能
         req.setAttribute("pageManager", pageManager);
         req.setAttribute("pageUsers", pageUsers);

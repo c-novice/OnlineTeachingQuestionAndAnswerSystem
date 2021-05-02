@@ -58,22 +58,14 @@
     <input id="searchPageBtn" type="button" value="确定">
 
     <script type="text/javascript">
-
         $(function () {
             // 跳到指定的页码
             $("#searchPageBtn").click(function () {
-
                 var pageNo = $("#pn_input").val();
-
-                // javaScript语言中提供了一个location地址栏对象
-                // 它有一个属性叫href.它可以获取浏览器地址栏中的地址
-                // href属性可读，可写
                 location.href = "${pageScope.basePath}${ requestScope.pageManager.url }&pageNo=" + pageNo;
             });
         });
-
     </script>
-
 </div>
 <%--分页条的结束--%>
 

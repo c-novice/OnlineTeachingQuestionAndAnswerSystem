@@ -15,7 +15,7 @@ import java.io.IOException;
 public class CommunityServlet extends BaseServlet {
 
 
-    private CommunityService communityService = new CommunityServiceImpl();
+    private final CommunityService communityService = new CommunityServiceImpl();
 
     /**
      * 初始化、保存数据和处理分页功能

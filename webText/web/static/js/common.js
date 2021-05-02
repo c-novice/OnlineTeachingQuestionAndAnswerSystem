@@ -202,7 +202,7 @@ function getcookie(name, nounescape) {
 }
 
 function Ajax(recvType, waitId) {
-	var aj = new Object();
+	var aj = {};
 	aj.loading = '请稍候...';
 	aj.recvType = recvType ? recvType : 'XML';
 	aj.waitId = waitId ? $(waitId) : null;
@@ -960,12 +960,12 @@ function hideMenu(attr, mtype) {
 		for(var i = 1; i <= JSMENU['layer']; i++) {
 			hideMenu(i, mtype);
 		}
-		return;
+
 	} else if(typeof attr == 'number') {
 		for(var j in JSMENU['active'][attr]) {
 			hideMenu(JSMENU['active'][attr][j], mtype);
 		}
-		return;
+
 	}else if(typeof attr == 'string') {
 		var menuObj = $(attr);
 		if(!menuObj || (mtype && menuObj.mtype != mtype)) return;
@@ -1271,10 +1271,10 @@ function AC_FL_RunContent() {
 }
 
 function AC_GetArgs(args, classid, mimeType) {
-	var ret = new Object();
-	ret.embedAttrs = new Object();
-	ret.params = new Object();
-	ret.objAttrs = new Object();
+	var ret = {};
+	ret.embedAttrs = {};
+	ret.params = {};
+	ret.objAttrs = {};
 	for (var i = 0; i < args.length; i = i + 2){
 		var currArg = args[i].toLowerCase();
 		switch (currArg){
@@ -1672,7 +1672,7 @@ function widthauto(obj) {
 	$F('_widthauto', arguments);
 }
 
-var secST = new Array();
+var secST = [];
 function updatesecqaa(idhash) {
 	$F('_updatesecqaa', arguments);
 }
@@ -1899,7 +1899,7 @@ function img_onmouseoverfunc(obj) {
 	if(typeof showsetcover == 'function') {
 		showsetcover(obj);
 	}
-	return;
+
 }
 
 function toggleBlind(dom) {

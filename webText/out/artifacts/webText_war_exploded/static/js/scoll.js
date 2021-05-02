@@ -40,7 +40,7 @@ function ISL_StopUp_1() {
     if (MoveWay_1 == "right") {
         return
     }
-    ;clearInterval(MoveTimeObj_1);
+    clearInterval(MoveTimeObj_1);
     if ((GetObj('ISL_Cont_11').scrollLeft - fill_1) % PageWidth_1 != 0) {
         Comp_1 = fill_1 - (GetObj('ISL_Cont_11').scrollLeft % PageWidth_1);
         CompScr_1()
@@ -71,7 +71,7 @@ function ISL_StopDown_1() {
     if (MoveWay_1 == "left") {
         return
     }
-    ;clearInterval(MoveTimeObj_1);
+    clearInterval(MoveTimeObj_1);
     if (GetObj('ISL_Cont_11').scrollLeft % PageWidth_1 - (fill_1 >= 0 ? fill_1 : fill_1 + 1) != 0) {
         Comp_1 = PageWidth_1 - GetObj('ISL_Cont_11').scrollLeft % PageWidth_1 + fill_1;
         CompScr_1()

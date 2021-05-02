@@ -12,7 +12,7 @@ import java.util.List;
 
 public class CommunityServiceImpl implements CommunityService {
 
-    private CommunityDao communityDao = new CommunityDaoImpl();
+    private final CommunityDao communityDao = new CommunityDaoImpl();
 
     @Override
     public void addQuestion(Question question) {

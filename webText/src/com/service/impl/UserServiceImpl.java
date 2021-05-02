@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
-    private UserDao userDao = new UserDaoImpl();
+    private final UserDao userDao = new UserDaoImpl();
 
     @Override
     public void registUser(User user) {
@@ -25,10 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean existsUsername(String username) {
 
-        if (userDao.queryUserByUsername(username) == null) {
-            return false;
-        } else
-            return true;
+        return userDao.queryUserByUsername(username) != null;
     }
 
     @Override

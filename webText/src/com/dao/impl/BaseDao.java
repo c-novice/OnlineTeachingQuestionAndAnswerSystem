@@ -13,7 +13,7 @@ import java.util.List;
 public abstract class BaseDao {
 
     //使用DbUtils操作数据库
-    private QueryRunner queryRunner = new QueryRunner();
+    private final QueryRunner queryRunner = new QueryRunner();
 
     /**
      * update() 方法用来执行：Insert\Update\Delete语句
