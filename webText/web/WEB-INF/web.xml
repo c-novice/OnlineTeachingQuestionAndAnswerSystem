@@ -38,7 +38,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>MessageServlet</servlet-name>
-        <url-pattern>messageServlet</url-pattern>
+        <url-pattern>/messageServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>
