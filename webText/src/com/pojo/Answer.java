@@ -3,7 +3,7 @@ package com.pojo;
 public class Answer {
     private String username;
     private String context;
-    private Integer welcomeCount;
+    private Integer welcomeCount = 0;
 
     public String getUsername() {
         return username;

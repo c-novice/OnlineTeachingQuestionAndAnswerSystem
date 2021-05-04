@@ -7,10 +7,11 @@ import java.util.Map;
 public class WebUtils {
     /**
      * 把Map中的值注入到对应的JavaBean属性中。
+     *
      * @param value
      * @param bean
      */
-    public static <T> T copyParamToBean( Map value , T bean ){
+    public static <T> T copyParamToBean(Map value, T bean) {
         try {
             /**
              * 把所有请求的参数都注入到user对象中
@@ -24,11 +25,12 @@ public class WebUtils {
 
     /**
      * 将字符串转换成为int类型的数据
+     *
      * @param strInt
      * @param defaultValue
      * @return
      */
-    public static int parseInt(String strInt,int defaultValue) {
+    public static int parseInt(String strInt, int defaultValue) {
         try {
             return Integer.parseInt(strInt);
         } catch (Exception e) {

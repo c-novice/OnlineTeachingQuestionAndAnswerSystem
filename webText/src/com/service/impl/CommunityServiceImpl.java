@@ -5,7 +5,6 @@ import com.dao.impl.CommunityDaoImpl;
 import com.pojo.Answer;
 import com.pojo.Page;
 import com.pojo.Question;
-import com.pojo.User;
 import com.service.CommunityService;
 
 import java.util.List;

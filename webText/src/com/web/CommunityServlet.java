@@ -70,7 +70,7 @@ public class CommunityServlet extends BaseServlet {
         Answer answer = WebUtils.copyParamToBean(req.getParameterMap(), new Answer());
 
         //添加问题
-        communityService.addAnswer(req.getParameter("questionName"),answer);
+        communityService.addAnswer(req.getParameter("questionName"), answer);
 
         //重定向
         resp.sendRedirect(req.getContextPath() + "/communityServlet?action=page");

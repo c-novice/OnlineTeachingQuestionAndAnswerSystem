@@ -1,4 +1,5 @@
 package com.pojo;
+
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * @param <T> 是具体的模块的javaBean类
  */
 public class Page<T> {
-    public static final Integer PAGE_SIZE = 3;
+    public static final Integer PAGE_SIZE = 15;
     // 当前页码
     private Integer pageNo;
     // 总页码

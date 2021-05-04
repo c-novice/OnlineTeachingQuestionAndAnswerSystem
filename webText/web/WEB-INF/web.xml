@@ -32,5 +32,13 @@
         <url-pattern>/communityServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>MessageServlet</servlet-name>
+        <servlet-class>com.web.MessageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MessageServlet</servlet-name>
+        <url-pattern>messageServlet</url-pattern>
+    </servlet-mapping>
 
 </web-app>

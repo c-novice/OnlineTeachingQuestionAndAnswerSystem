@@ -95,7 +95,7 @@ public class UserServiceImpl implements UserService {
         int begin = (page.getPageNo() - 1) * pageSize;
 
         // 求当前页数据
-        List<User> items = userDao.queryForPageItemsBySearchName(begin, pageSize,searchName);
+        List<User> items = userDao.queryForPageItemsBySearchName(begin, pageSize, searchName);
 
         // 设置当前页数据
         page.setItems(items);

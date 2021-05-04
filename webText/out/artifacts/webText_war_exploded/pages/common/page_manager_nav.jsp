@@ -53,7 +53,7 @@
         <a href="${ requestScope.pageManager.url }&pageNo=${requestScope.pageManager.pageTotal}">末页</a>
     </c:if>
 
-    共${ requestScope.pageManager.pageTotal }页，${ requestScope.pageManager.pageTotalCount }条记录
+    共${ requestScope.pageManager.pageTotal }页，${ requestScope.pageManager.pageTotalCount }条问题
     到第<input value="${param.pageNo}" name="pn" id="pn_input"/>页
     <input id="searchPageBtn" type="button" value="确定">
 

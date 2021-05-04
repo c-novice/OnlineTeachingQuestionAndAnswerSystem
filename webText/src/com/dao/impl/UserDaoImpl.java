@@ -1,7 +1,6 @@
 package com.dao.impl;
 
 import com.dao.UserDao;
-import com.pojo.Question;
 import com.pojo.User;
 
 import java.util.List;
@@ -53,6 +52,6 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     @Override
     public List<User> queryForPageItemsBySearchName(int begin, int pageSize, String searchName) {
         String sql = "select * from t_user where id in ( select `id` from t_user where username like '%' ? '%' ) limit ? , ?";
-        return queryForList(User.class, sql, searchName,begin,pageSize);
+        return queryForList(User.class, sql, searchName, begin, pageSize);
     }
 }

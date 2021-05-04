@@ -14,7 +14,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
 
 public class ManagerServlet extends BaseServlet {
 
@@ -175,7 +174,7 @@ public class ManagerServlet extends BaseServlet {
         //2 调用CommunityServiceService.page(pageNo，pageSize)：Page对象
         Page<Question> pageManager = communityService.page(pageNo, pageSize);
         Page<User> pageUsers = userService.pageByUsername(pageNo, Integer.MAX_VALUE, searchName);
-        pageManager.setUrl("managerServlet?action=searchUsername&searchName"+searchName);
+        pageManager.setUrl("managerServlet?action=searchUsername&searchName" + searchName);
         //3 保存Page对象到Request域中，兼具初始化的功能
         req.setAttribute("pageManager", pageManager);
         req.setAttribute("pageUsers", pageUsers);
@@ -200,7 +199,7 @@ public class ManagerServlet extends BaseServlet {
         //2 调用CommunityServiceService.page(pageNo，pageSize)：Page对象
         Page<Question> pageManager = communityService.pageByQuestion(pageNo, pageSize, searchName);
         Page<User> pageUsers = userService.page(pageNo, Integer.MAX_VALUE);
-        pageManager.setUrl("managerServlet?action=searchQuestion&searchName="+searchName);
+        pageManager.setUrl("managerServlet?action=searchQuestion&searchName=" + searchName);
         //3 保存Page对象到Request域中，兼具初始化的功能
         req.setAttribute("pageManager", pageManager);
         req.setAttribute("pageUsers", pageUsers);

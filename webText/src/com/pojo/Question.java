@@ -1,4 +1,5 @@
 package com.pojo;
+
 import java.util.List;
 
 public class Question {
@@ -9,8 +10,8 @@ public class Question {
     public Question() {
     }
 
-    public Question(String name){
-        this.name=name;
+    public Question(String name) {
+        this.name = name;
     }
 
     public Question(Integer id, String name) {

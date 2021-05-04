@@ -3,7 +3,6 @@ package com.dao.impl;
 import com.dao.CommunityDao;
 import com.pojo.Answer;
 import com.pojo.Question;
-import com.pojo.User;
 
 import java.util.List;
 
@@ -72,6 +71,6 @@ public class CommunityDaoImpl extends BaseDao implements CommunityDao {
     @Override
     public List<Question> queryForPageItemsBySearchName(int begin, int pageSize, String searchName) {
         String sql = "select * from t_question where id in ( select `id` from t_question where name like '%' ? '%' ) limit ? , ?";
-        return queryForList(Question.class, sql, searchName,begin,pageSize);
+        return queryForList(Question.class, sql, searchName, begin, pageSize);
     }
 }
