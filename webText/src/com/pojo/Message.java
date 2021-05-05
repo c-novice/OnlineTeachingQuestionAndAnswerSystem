@@ -2,19 +2,21 @@ package com.pojo;
 
 public class Message {
     private String usernameFrom;
-    private String UsernameTo;
+    private String usernameTo;
     private String context;
     private Integer type;
+    private String id;
     private Integer checked = 0;
 
     public Message() {
     }
 
-    public Message(String usernameFrom, String usernameTo, String context, Integer type, Integer checked) {
+    public Message(String usernameFrom, String usernameTo, String context, Integer type, String id, Integer checked) {
         this.usernameFrom = usernameFrom;
-        UsernameTo = usernameTo;
+        this.usernameTo = usernameTo;
         this.context = context;
         this.type = type;
+        this.id = id;
         this.checked = checked;
     }
 
@@ -27,11 +29,11 @@ public class Message {
     }
 
     public String getUsernameTo() {
-        return UsernameTo;
+        return usernameTo;
     }
 
     public void setUsernameTo(String usernameTo) {
-        UsernameTo = usernameTo;
+        this.usernameTo = usernameTo;
     }
 
     public String getContext() {
@@ -50,21 +52,30 @@ public class Message {
         this.type = type;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public Integer getChecked() {
         return checked;
     }
 
-    public void setChecked(Integer checked) {
-        this.checked = checked;
+    public void setChecked(Integer checked){
+        this.checked=checked;
     }
 
     @Override
     public String toString() {
         return "Message{" +
                 "usernameFrom='" + usernameFrom + '\'' +
-                ", UsernameTo='" + UsernameTo + '\'' +
+                ", UsernameTo='" + usernameTo + '\'' +
                 ", context='" + context + '\'' +
                 ", type=" + type +
+                ", id='" + id + '\'' +
                 ", checked=" + checked +
                 '}';
     }

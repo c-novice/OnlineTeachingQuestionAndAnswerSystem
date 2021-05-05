@@ -1,8 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
-    <title>无标题文档</title>
+    <title>消息界面</title>
     <style type="text/css">
         <!--
         body {
@@ -23,13 +24,6 @@
             font-size: 12px
         }
 
-        .STYLE3 {
-            color: #666666;
-            font-weight: bold;
-            font-size: 12px;
-        }
-
-        -->
     </style>
 </head>
 
@@ -61,20 +55,18 @@
                                 </td>
                                 <td width="12%"
                                     style="padding-left:1px; border-right: solid 1px #6daed6; border-left:solid 1px #e7f4fc;">
-                                    <div align="center"><span class="STYLE2">大小</span></div>
+                                    <div align="center"><span class="STYLE2">状态</span></div>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
+
                 <tr>
                     <td style="padding-top:10px;">
                         <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
                             <tr>
-                                <td><img src="images/list.gif" width="11" height="11"> <span class="STYLE3">大小 中 （25-100kb）</span>
-                                </td>
-                            </tr>
-                            <tr>
+                                <c:forEach items="${requestScope.pageMessages.items}" var="message">
                                 <td style="padding-top:5px;">
                                     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                         <tr>
@@ -83,40 +75,34 @@
                                                 </div>
                                             </td>
                                             <td width="16%" style="border-bottom:solid 1px #c3d7e3;" class="STYLE2">
-                                                <div align="left"><span class="STYLE2"> outlook2003 </span></div>
+                                                <div align="left"><span class="STYLE2">${message.usernameFrom}</span>
+                                                </div>
                                             </td>
                                             <td width="51%" style="border-bottom:solid 1px #c3d7e3;" class="STYLE2">
-                                                <div align="left"><span class="STYLE2">欢迎使用outlook2003系统</span></div>
+                                                <div align="left"><span class="STYLE2">${message.context}</span></div>
                                             </td>
                                             <td width="12%" style="border-bottom:solid 1px #c3d7e3;" class="STYLE2">
                                                 <div align="center">2008-08-22</div>
                                             </td>
                                             <td width="12%" style="border-bottom:solid 1px #c3d7e3;" class="STYLE2">
-                                                <div align="center">123kb</div>
+                                                <c:if test="${messgae.checked==0}">
+                                                    <div align="center">未读</div>
+                                                </c:if>
+                                                <c:if test="${messgae.checked!=0}">
+                                                    <div align="center">已读</div>
+                                                </c:if>
                                             </td>
+                                            </c:forEach>
                                         </tr>
-                                        <tr>
-                                            <td height="22" style="border-bottom:solid 1px #c3d7e3;">
-                                                <div align="center"><img src="images/ml.gif" width="13" height="12">
-                                                </div>
-                                            </td>
-                                            <td class="STYLE2" style="border-bottom:solid 1px #c3d7e3;">
-                                                <div align="left">tiezhu0902@qq.com</div>
-                                            </td>
-                                            <td class="STYLE2" style="border-bottom:solid 1px #c3d7e3;">你好，请接收邮件</td>
-                                            <td class="STYLE2" style="border-bottom:solid 1px #c3d7e3;">
-                                                <div align="center">2008-08-25</div>
-                                            </td>
-                                            <td class="STYLE2" style="border-bottom:solid 1px #c3d7e3;">
-                                                <div align="center">10kb</div>
-                                            </td>
-                                        </tr>
+
+
                                     </table>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
+
             </table>
         </td>
     </tr>
