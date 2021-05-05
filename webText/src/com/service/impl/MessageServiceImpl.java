@@ -11,13 +11,13 @@ public class MessageServiceImpl implements com.service.MessageService {
     private final MessageDao messageDao = new MessageDaoImpl();
 
     @Override
-    public Page<Message> page(int pageNo, int pageSize) {
+    public Page<Message> page(int pageNo, int pageSize,String username) {
         Page<Message> page = new Page<Message>();
 
         // 设置每页显示的数量
         page.setPageSize(pageSize);
         // 求总记录数
-        Integer pageTotalCount = messageDao.queryForPageTotalCount();
+        Integer pageTotalCount = messageDao.queryForPageTotalCount(username);
         // 设置总记录数
         page.setPageTotalCount(pageTotalCount);
         // 求总页码
@@ -35,10 +35,17 @@ public class MessageServiceImpl implements com.service.MessageService {
         int begin = (page.getPageNo() - 1) * pageSize;
 
         // 求当前页数据
-        List<Message> items = messageDao.queryForPageItems(begin, pageSize);
+        List<Message> items = messageDao.queryForPageItems(begin, pageSize,username);
 
         // 设置当前页数据
         page.setItems(items);
         return page;
     }
+
+
+    @Override
+    public void deleteMessageById(Integer id) {
+        messageDao.deleteMessageById(id);
+    }
 }
+

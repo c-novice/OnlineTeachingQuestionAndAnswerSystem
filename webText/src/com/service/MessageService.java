@@ -5,7 +5,8 @@ import com.pojo.Page;
 
 public interface MessageService {
     //分页&初始化
-    Page<Message> page(int pageNo, int pageSize);
+    Page<Message> page(int pageNo, int pageSize,String username);
 
 
+    void deleteMessageById(Integer id);
 }

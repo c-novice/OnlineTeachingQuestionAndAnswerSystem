@@ -1,0 +1,78 @@
+#head{
+    background-color: #869d9d;
+    height: 100px;
+    color: black;
+    font-size: 16px;
+}
+
+.wel_word{
+    text-align:center;
+    color: #000000;
+    font-size:300%;
+    font-weight: bold;
+}
+
+.anwser_title{
+    margin: 10px;
+}
+
+a:visited{
+    color: #CCCCCC;
+}
+a{
+    color: black;
+    font-size: 16px;
+    transition: 0.3s;
+    text-align: right;
+}
+a:hover {
+    color:black;
+    text-decoration: underline black;
+}
+#create_input{
+    outline-style: none ;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 10px 14px;
+    width: 43%;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: "Microsoft soft";
+    transition-duration: 0.4s;
+    margin-left: +17%;
+}
+
+#create_input:focus{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+
+#create_button{
+    margin-right: 12%;
+    width: 20%;
+    outline-style: none ;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    border-radius: 3px;
+    transition: 0.4s;
+    font-family: "Microsoft soft";
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#create_button:hover{
+    background-color: #c0c4c3;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+ul{
+    background-color: #cccccc;
+}
+li{
+    margin:10px;
+    border-radius: 2px;
+    background-color: #d5d5d5;
+}

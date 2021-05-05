@@ -43,7 +43,7 @@
                                 <td width="9%" height="22" style=" border-right: solid 1px #6daed6; ">&nbsp;</td>
                                 <td width="11%"
                                     style="padding-left:1px; border-right: solid 1px #6daed6; border-left:solid 1px #e7f4fc;">
-                                    <div align="center"><span class="STYLE2"> 收件人</span></div>
+                                    <div align="center"><span class="STYLE2"> 发件人</span></div>
                                 </td>
                                 <td width="56%"
                                     style="padding-left:1px; border-right: solid 1px #6daed6; border-left:solid 1px #e7f4fc;">
@@ -66,8 +66,8 @@
                     <td style="padding-top:10px;">
                         <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
                             <tr>
-                                <c:forEach items="${requestScope.pageMessages.items}" var="message">
                                 <td style="padding-top:5px;">
+                                    <c:forEach items="${requestScope.pageMessages.items}" var="message">
                                     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                         <tr>
                                             <td width="9%" height="22" style="border-bottom:solid 1px #c3d7e3;">
@@ -81,17 +81,32 @@
                                             <td width="51%" style="border-bottom:solid 1px #c3d7e3;" class="STYLE2">
                                                 <div align="left"><span class="STYLE2">${message.context}</span></div>
                                             </td>
+
                                             <td width="12%" style="border-bottom:solid 1px #c3d7e3;" class="STYLE2">
                                                 <div align="center">2008-08-22</div>
                                             </td>
+
                                             <td width="12%" style="border-bottom:solid 1px #c3d7e3;" class="STYLE2">
-                                                <c:if test="${messgae.checked==0}">
+                                                <c:if test="${message.checked==0}">
                                                     <div align="center">未读</div>
                                                 </c:if>
-                                                <c:if test="${messgae.checked!=0}">
+                                                <c:if test="${message.checked!=0}">
                                                     <div align="center">已读</div>
                                                 </c:if>
                                             </td>
+
+                                            <td>
+                                                <a href="messageServlet?action=deleteMessage&deleteMessageId=${message.id}">
+                                                    <button type="button" >
+                                                        删除
+                                                    </button>
+                                                </a>
+
+
+                                            </td>
+
+
+
                                             </c:forEach>
                                         </tr>
 
