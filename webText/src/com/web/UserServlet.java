@@ -6,6 +6,7 @@ import com.service.impl.UserServiceImpl;
 import com.utils.WebUtils;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -45,7 +46,6 @@ public class UserServlet extends BaseServlet {
      * @throws IOException
      */
 
-
     protected void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        1、销毁Session中用户登录的信息（或者销毁Session）
         req.getSession().invalidate();
@@ -63,6 +63,7 @@ public class UserServlet extends BaseServlet {
      */
     protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 获取请求的参数
+        String autoLogin=req.getParameter("autoLogin");
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         // 调用 userService.login()登录处理业务
@@ -72,13 +73,29 @@ public class UserServlet extends BaseServlet {
             // 把错误信息，和回显的表单项信息，保存到Request域中
             req.setAttribute("msg", "用户或密码错误！");
             req.setAttribute("username", username);
+            //清空cookie
+            Cookie cookie1=new Cookie("username","");
+            Cookie cookie2=new Cookie("password","");
+            cookie1.setMaxAge(0);
+            cookie2.setMaxAge(0);
+            resp.addCookie(cookie1);
+            resp.addCookie(cookie2);
             // 跳回登录页面
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
         } else {
             // 登录 成功
             // 保存用户登录的信息到Session域中
             req.getSession().setAttribute("user", loginUser);
-            //跳到成功页面login_success.jsp
+            //根据用户勾选将信息保存在Cookie中
+            if(autoLogin!=null){
+                Cookie cookie1=new Cookie("username",loginUser.getUsername());
+                Cookie cookie2=new Cookie("password",loginUser.getPassword());
+                cookie1.setMaxAge(60*60*24*7);
+                cookie2.setMaxAge(60*60*24*7);
+                resp.addCookie(cookie1);
+                resp.addCookie(cookie2);
+            }
+            //跳到成功页面login_success.jsp,此时用重定向避免表单重复提交
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         }
     }

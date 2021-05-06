@@ -27,19 +27,13 @@ public class MessageServlet extends BaseServlet {
         //1 获取请求的参数 pageNo 和 pageSize
         int pageNo = WebUtils.parseInt(req.getParameter("pageNo"), 1);
         int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE / 2);
-
         User user=(User) req.getSession().getAttribute("user");
-
         //2、service层获得当前页的数据
         Page<Message> pageMessages = messageService.page(pageNo, pageSize, user.getUsername());
         pageMessages.setUrl("messageServlet?action=page");
-
         //3 保存Page对象到Request域中，兼具初始化的功能
         req.setAttribute("pageMessages", pageMessages);
-
-
-
-        //4、重定向
+        //4、请求转发
         req.getRequestDispatcher("/pages/user/message.jsp").forward(req, resp);
     }
 
@@ -54,15 +48,10 @@ public class MessageServlet extends BaseServlet {
     protected void deleteMessage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取要删除的消息id
         Integer id = Integer.parseInt(req.getParameter("deleteMessageId"));
-
         //删除
         messageService.deleteMessageById(id);
-
         //请求转发
         resp.sendRedirect(req.getContextPath() + "/messageServlet?action=page");
-
-
-
     }
 
     /**

@@ -1,33 +1,47 @@
-#head{
-    background-color: #869d9d;
-    height: 100px;
-    color: black;
-    font-size: 16px;
+body{
+    -webkit-transform-style: preserve-3d;
+    transform-origin: center center;
 }
-
+#header{
+    background-color: #CCCCCC;
+    height: 100px;
+    font-size: 20px;
+}
+#header_content{
+    margin-top: -30px;
+    height: 60px;
+    margin-left: 91%;
+    line-height: 60px;
+    background-color: white;
+    display: block;
+    text-align: right;
+    color: #2b312c;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+#header_content:hover{
+    margin-top: -40px;
+    background-color: #617172;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+#create{
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
 .wel_word{
-    text-align:center;
-    color: #000000;
+    margin-left: 2%;
+    color: #2b312c;
     font-size:300%;
     font-weight: bold;
 }
-
-.anwser_title{
-    margin: 10px;
+.link1{
+    color: #617172;
+    transition: 1s;
 }
-
-a:visited{
-    color: #CCCCCC;
-}
-a{
+.link1:hover{
+    text-decoration: none;
     color: black;
-    font-size: 16px;
-    transition: 0.3s;
-    text-align: right;
-}
-a:hover {
-    color:black;
-    text-decoration: underline black;
 }
 #create_input{
     outline-style: none ;
@@ -37,42 +51,98 @@ a:hover {
     width: 43%;
     font-size: 16px;
     font-weight: 700;
-    font-family: "Microsoft soft";
     transition-duration: 0.4s;
     margin-left: +17%;
 }
-
+#anwser_input{
+    outline-style: none ;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 5px 14px;
+    width: 43%;
+    font-size: 16px;
+    font-weight: 700;
+    transition-duration: 0.4s;
+    margin:10px;
+}
 #create_input:focus{
     border-color: #66afe9;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
 }
-
-#create_button{
-    margin-right: 12%;
-    width: 20%;
+#create_btn{
+    margin-right: 22%;
+    width: 10%;
     outline-style: none ;
     border: 1px solid #ccc;
-    padding: 10px 14px;
+    padding: 7px 14px;
     border-radius: 3px;
     transition: 0.4s;
-    font-family: "Microsoft soft";
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 700;
+}
+#anwser_btn{
+    margin-right:4%;
+    width: 10%;
+    outline-style: none ;
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    border-radius: 3px;
+    transition: 0.4s;
+    font-size: 15px;
     font-weight: 700;
 }
 
-#create_button:hover{
+#create_btn:hover{
     background-color: #c0c4c3;
     color: white;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
-
+#anwser_btn:hover{
+    background-color: #c0c4c3;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
 ul{
     background-color: #cccccc;
+    border-radius: 8px;
+    margin-left:13%;
+    margin-right:13%;
+    padding: 0;
 }
-li{
-    margin:10px;
-    border-radius: 2px;
-    background-color: #d5d5d5;
+.question_name{
+    display: block;
+    line-height: 50px;
+    height: 50px;
+    list-style: none;
+    margin: 10px;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+    background-color: white;
+}
+
+.link2{
+    display: block;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 18px;
+    color: black;
+}
+#anwser_frame{
+    height: 40px;
+    line-height: 40px;
+    /*此次设置margin-top/bottom会导致动画后元素抖动*/
+    margin-left: 2%;
+    background-color: #737c7b;
+    margin-right: 4%;
+    color: white;
+}
+#anwser{
+    margin-left: 2%;
+}
+.panel-collapse{
+    background-color: white;
+    margin: -10px 10px 10px 10px;
+
 }

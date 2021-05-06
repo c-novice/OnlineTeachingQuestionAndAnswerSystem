@@ -1,4 +1,5 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 
@@ -26,16 +27,26 @@
                 <form action="userServlet" method="post">
                     <input type="hidden" name="action" value="login"/>
                     <div class="form_text_ipt">
+                        <c:if test="${empty requestScope.msg}">
+                            <input name="username" type="text" placeholder="账号" value="${cookie.username.value}">
+                        </c:if>
+                        <c:if test="${not empty requestScope.msg}">
                         <input name="username" type="text" placeholder="账号" value="${requestScope.username}">
+                        </c:if>
                     </div>
                     <div class="ececk_warning"><span>账号不能为空</span></div>
                     <div class="form_text_ipt">
-                        <input name="password" type="password" placeholder="密码">
+                        <c:if test="${empty requestScope.msg}">
+                            <input name="password" type="password" placeholder="密码" value="${cookie.password.value}">
+                        </c:if>
+                        <c:if test="${not empty requestScope.msg}">
+                            <input name="password" type="password" placeholder="密码">
+                        </c:if>
                     </div>
                     <div class="ececk_warning"><span>密码不能为空</span></div>
                     <div class="form_check_ipt">
                         <div class="left check_left">
-                            <label><input name="" type="checkbox"> 下次自动登录</label>
+                            <label><input name="autoLogin" type="checkbox" value="checked"> 记住密码</label>
                         </div>
                     </div>
                     <div class="form_btn">

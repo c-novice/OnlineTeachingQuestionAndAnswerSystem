@@ -64,10 +64,8 @@ public class ManagerServlet extends BaseServlet {
     protected void deleteUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取要删除的用户id
         Integer id = Integer.parseInt(req.getParameter("deleteUserId"));
-
         //删除
         userService.deleteUserById(id);
-
         //重定向
         resp.sendRedirect(req.getContextPath() + "/managerServlet?action=page");
     }
@@ -83,10 +81,8 @@ public class ManagerServlet extends BaseServlet {
     protected void changeUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //注入对象
         User user = WebUtils.copyParamToBean(req.getParameterMap(), new User());
-
         //更新信息
         userService.updateUser(user);
-
         //重定向
         resp.sendRedirect(req.getContextPath() + "/managerServlet?action=page");
     }
@@ -125,8 +121,6 @@ public class ManagerServlet extends BaseServlet {
             communityService.deleteQuestionById(id);
         else
             communityService.deleteAnswerByNameAndContext(name, context);
-        //若context不为空说明需要删除t_answer内容
-
         //重定向
         resp.sendRedirect(req.getContextPath() + "/managerServlet?action=page");
     }
@@ -153,7 +147,6 @@ public class ManagerServlet extends BaseServlet {
             //2、修改t_answer
             communityService.addAnswer(name, new Answer("admin", context, 0));
         }
-
         //重定向
         resp.sendRedirect(req.getContextPath() + "/managerServlet?action=page");
     }

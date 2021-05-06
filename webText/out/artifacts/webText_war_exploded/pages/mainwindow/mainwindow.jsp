@@ -11,7 +11,6 @@
 <body style="overflow-x:hidden">
 <div class="wk_inav">
     <ul class="nav">
-
         <li><a href="pages/mainwindow/mainwindow.jsp">首页</a></li>
         <c:if test="${empty sessionScope.user}">
             <li><a href="pages/user/login.jsp">登录</a></li>
