@@ -27,7 +27,10 @@
         <c:if test="${not empty sessionScope.user}">
             <li><a href="pages/user/user_change.jsp">个人信息</a></li>
         </c:if>
+
+        <c:if test="${not empty sessionScope.user}">
         <li><a href="messageServlet?action=page">消息</a></li>
+        </c:if>
 
         <c:if test="${sessionScope.user.username=='admin'}">
             <li><a href="managerServlet?action=page">后台管理</a></li>

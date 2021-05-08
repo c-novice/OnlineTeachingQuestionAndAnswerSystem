@@ -26,4 +26,9 @@ public interface MessageDao  {
      */
     public Integer deleteMessageById(Integer id);
 
+    /**
+     * 根据username设置所有的消息已读
+     * @param username
+     */
+    public Integer setAllMessageRead(String username);
 }

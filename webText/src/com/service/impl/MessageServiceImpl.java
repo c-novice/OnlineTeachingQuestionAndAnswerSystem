@@ -36,6 +36,8 @@ public class MessageServiceImpl implements com.service.MessageService {
 
         // 求当前页数据
         List<Message> items = messageDao.queryForPageItems(begin, pageSize,username);
+        //将当前页数据修改为已读
+        messageDao.setAllMessageRead(username);
 
         // 设置当前页数据
         page.setItems(items);

@@ -81,11 +81,6 @@
                                             <td width="51%" style="border-bottom:solid 1px #c3d7e3;" class="STYLE2">
                                                 <div align="left"><span class="STYLE2">${message.context}</span></div>
                                             </td>
-
-                                            <td width="12%" style="border-bottom:solid 1px #c3d7e3;" class="STYLE2">
-                                                <div align="center">2008-08-22</div>
-                                            </td>
-
                                             <td width="12%" style="border-bottom:solid 1px #c3d7e3;" class="STYLE2">
                                                 <c:if test="${message.checked==0}">
                                                     <div align="center">未读</div>
@@ -94,23 +89,15 @@
                                                     <div align="center">已读</div>
                                                 </c:if>
                                             </td>
-
                                             <td>
                                                 <a href="messageServlet?action=deleteMessage&deleteMessageId=${message.id}">
                                                     <button type="button" >
                                                         删除
                                                     </button>
                                                 </a>
-
-
                                             </td>
-
-
-
                                             </c:forEach>
                                         </tr>
-
-
                                     </table>
                                 </td>
                             </tr>
