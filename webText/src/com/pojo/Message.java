@@ -11,6 +11,12 @@ public class Message {
     public Message() {
     }
 
+    public Message(String usernameFrom, String usernameTo, Integer type) {
+        this.usernameFrom = usernameFrom;
+        this.usernameTo = usernameTo;
+        this.type = type;
+    }
+
     public Message(String usernameFrom, String usernameTo, String context, Integer type, String id, Integer checked) {
         this.usernameFrom = usernameFrom;
         this.usernameTo = usernameTo;

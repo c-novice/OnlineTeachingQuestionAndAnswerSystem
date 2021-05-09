@@ -9,8 +9,8 @@ import java.util.List;
 public class CommunityDaoImpl extends BaseDao implements CommunityDao {
     @Override
     public int addQuestion(Question question) {
-        String sql = "insert into t_question(`name`) values(?)";
-        return update(sql, question.getName());
+        String sql = "insert into t_question(`name`,`username`) values(?,?)";
+        return update(sql, question.getName(), question.getUsername());
     }
 
     @Override
@@ -33,19 +33,19 @@ public class CommunityDaoImpl extends BaseDao implements CommunityDao {
 
     @Override
     public int updateQuestion(Question question) {
-        String sql = "update t_question set `name`= ? where id = ?";
-        return update(sql, question.getName(), question.getId());
+        String sql = "update t_question set `name`= ? , `username`= ? where id = ?";
+        return update(sql, question.getName(), question.getUsername(), question.getId());
     }
 
     @Override
     public Question queryQuestionById(Integer id) {
-        String sql = "select `id` , `name` ,id from t_question where id = ?";
+        String sql = "select * from t_question where id = ?";
         return queryForOne(Question.class, sql, id);
     }
 
     @Override
     public List<Question> queryQuestions() {
-        String sql = "select `id` , `name` ,from t_question";
+        String sql = "select * ,from t_question";
         return queryForList(Question.class, sql);
     }
 
@@ -64,7 +64,7 @@ public class CommunityDaoImpl extends BaseDao implements CommunityDao {
 
     @Override
     public List<Question> queryForPageItems(int begin, int pageSize) {
-        String sql = "select `id` , `name` ,name from t_question limit ?,?";
+        String sql = "select * ,name from t_question limit ?,?";
         return queryForList(Question.class, sql, begin, pageSize);
     }
 
@@ -72,5 +72,12 @@ public class CommunityDaoImpl extends BaseDao implements CommunityDao {
     public List<Question> queryForPageItemsBySearchName(int begin, int pageSize, String searchName) {
         String sql = "select * from t_question where id in ( select `id` from t_question where name like '%' ? '%' ) limit ? , ?";
         return queryForList(Question.class, sql, searchName, begin, pageSize);
+    }
+
+    @Override
+    public Question queryUsernameToByQuestionName(String questionName) {
+        String sql = "select * from t_question where name = ?";
+        System.out.println(queryForOne(Question.class, sql, questionName));
+        return queryForOne(Question.class, sql, questionName);
     }
 }

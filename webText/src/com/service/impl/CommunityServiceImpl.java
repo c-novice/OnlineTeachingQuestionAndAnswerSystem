@@ -120,4 +120,9 @@ public class CommunityServiceImpl implements CommunityService {
         page.setItems(items);
         return page;
     }
+
+    @Override
+    public Question getUsernameToByQuestionName(String questionName) {
+       return communityDao.queryUsernameToByQuestionName(questionName);
+    }
 }

@@ -39,4 +39,11 @@ public interface CommunityDao {
 
     //根据searchName查询当前页下的问题
     List<Question> queryForPageItemsBySearchName(int begin, int pageSize, String searchName);
+
+    /**
+     * 查询用户名根据问题名
+     * @param questionName
+     * @return
+     */
+    Question queryUsernameToByQuestionName(String questionName);
 }

@@ -79,4 +79,11 @@ public interface CommunityService {
      * @return
      */
     Page<Question> pageByQuestion(int pageNo, int pageSize, String searchName);
+
+    /**
+     * 根据问题名查询创建该问题的用户
+     * @param questionName
+     * @return
+     */
+    Question getUsernameToByQuestionName(String questionName);
 }

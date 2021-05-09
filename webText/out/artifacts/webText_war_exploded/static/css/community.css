@@ -8,7 +8,7 @@ body{
     font-size: 20px;
 }
 #header_content{
-    margin-top: -30px;
+    margin-top: 15px;
     height: 60px;
     margin-left: 91%;
     line-height: 60px;
@@ -21,7 +21,7 @@ body{
     transition: 0.3s;
 }
 #header_content:hover{
-    margin-top: -40px;
+    margin-top: -10px;
     background-color: #617172;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
@@ -54,7 +54,7 @@ body{
     transition-duration: 0.4s;
     margin-left: +17%;
 }
-#anwser_input{
+#answer_input{
     outline-style: none ;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -82,7 +82,7 @@ body{
     font-size: 20px;
     font-weight: 700;
 }
-#anwser_btn{
+#answer_btn{
     margin-right:4%;
     width: 10%;
     outline-style: none ;
@@ -99,7 +99,7 @@ body{
     color: white;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
-#anwser_btn:hover{
+#answer_btn:hover{
     background-color: #c0c4c3;
     color: white;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
@@ -129,7 +129,7 @@ ul{
     font-size: 18px;
     color: black;
 }
-#anwser_frame{
+#answer_frame{
     height: 40px;
     line-height: 40px;
     /*此次设置margin-top/bottom会导致动画后元素抖动*/
@@ -138,7 +138,7 @@ ul{
     margin-right: 4%;
     color: white;
 }
-#anwser{
+#answer{
     margin-left: 2%;
 }
 .panel-collapse{

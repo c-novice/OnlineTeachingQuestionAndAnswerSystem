@@ -1,10 +1,13 @@
 package com.web;
 
 import com.pojo.Answer;
+import com.pojo.Message;
 import com.pojo.Page;
 import com.pojo.Question;
 import com.service.CommunityService;
+import com.service.MessageService;
 import com.service.impl.CommunityServiceImpl;
+import com.service.impl.MessageServiceImpl;
 import com.utils.WebUtils;
 
 import javax.servlet.ServletException;
@@ -16,6 +19,7 @@ public class CommunityServlet extends BaseServlet {
 
 
     private final CommunityService communityService = new CommunityServiceImpl();
+    private final MessageService messageService=new MessageServiceImpl() ;
 
     /**
      * 初始化、保存数据和处理分页功能
@@ -66,8 +70,16 @@ public class CommunityServlet extends BaseServlet {
     protected void createAnswer(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //注入对象
         Answer answer = WebUtils.copyParamToBean(req.getParameterMap(), new Answer());
-        //添加问题
+        String questionName=req.getParameter("questionName");
+        Question question=communityService.getUsernameToByQuestionName(questionName);
+
+        Message message=new Message(req.getParameter("username"),question.getUsername(),1);
+        message.setContext("用户"+message.getUsernameFrom()+"回答了您的问题"+questionName);
+
+        //添加回答
         communityService.addAnswer(req.getParameter("questionName"), answer);
+        //发送消息
+        messageService.addAnswerFromCommunity(message);
         //重定向
         resp.sendRedirect(req.getContextPath() + "/communityServlet?action=page");
     }

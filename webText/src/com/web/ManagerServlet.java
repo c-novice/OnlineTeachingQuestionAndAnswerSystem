@@ -97,7 +97,7 @@ public class ManagerServlet extends BaseServlet {
      */
     protected void addQuestion(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取新问题的名字
-        Question newQuestion = new Question(req.getParameter("newQuestionName"));
+        Question newQuestion = new Question(req.getParameter("newQuestionName"), (String) req.getSession().getAttribute("username"));
         //调用service层add方法
         communityService.addQuestion(newQuestion);
         //重定向
@@ -142,7 +142,7 @@ public class ManagerServlet extends BaseServlet {
         Question preQuestion = communityService.queryQuestionById(id);
         if (!preQuestion.getName().equals(name)) {
             //1、修改t_question
-            communityService.updateQuestion(new Question(id, name));
+            communityService.updateQuestion(new Question(id, name,(String) req.getSession().getAttribute("username")));
         } else {
             //2、修改t_answer
             communityService.addAnswer(name, new Answer("admin", context, 0));

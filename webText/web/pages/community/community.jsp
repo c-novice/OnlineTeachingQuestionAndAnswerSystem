@@ -20,15 +20,12 @@ background-attachment: fixed;">
         <div>
             <%--如果用户还没有登录，显示 【登录和注册的菜单】 --%>
             <c:if test="${empty sessionScope.user}">
-
                 <a class="link1" href="pages/user/login.jsp">登录</a> | <a class="link1" href="pages/user/regist.jsp">注册</a> &nbsp;&nbsp;
-
-
             </c:if>
             <%--如果已经登录，则显示 登录 成功之后的用户信息。--%>
             <c:if test="${not empty sessionScope.user}">
                 <span>欢迎 ${sessionScope.user.username}</span>
-                <a class="link1" href="userServlet?action=logout">注销</a>&nbsp;&nbsp;&nbsp;
+                <a class="link1" href="userServlet?action=logout">注销</a>
             </c:if>
         </div>
     </div>
@@ -54,21 +51,21 @@ background-attachment: fixed;">
         <li type="none">
             <div id="collapse${question.id}" class="panel-collapse collapse">
                 <c:forEach items="${question.answers}" var="answer">
-                    <div id="anwser_frame">
-                        <div id="anwser">
+                    <div id="answer_frame">
+                        <div id="answer">
                                 ${answer.username}:${answer.context}<br>
                         </div>
 
                     </div>
                 </c:forEach>
                 <br>
-                <c:if test="${ empty sessionScope.user}">
+                <c:if test="${not empty sessionScope.user}">
                     <form action="communityServlet">
                         <input type="hidden" name="action" value="createAnswer">
                         <input type="hidden" name="questionName" value="${question.name}">
                         <input type="hidden" name="username" value="${sessionScope.user.username}">
-                        <input id="anwser_input" type="text" placeholder="回答问题" name="context">
-                        <button id="anwser_btn" type="submit">提交</button>
+                        <input id="answer_input" type="text" placeholder="回答问题" name="context">
+                        <button id="answer_btn" type="submit">提交</button>
                     </form>
                     <br>
                 </c:if>

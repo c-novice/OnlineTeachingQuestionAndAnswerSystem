@@ -49,5 +49,10 @@ public class MessageServiceImpl implements com.service.MessageService {
     public void deleteMessageById(Integer id) {
         messageDao.deleteMessageById(id);
     }
+
+    @Override
+    public void addAnswerFromCommunity(Message message) {
+        messageDao.addMessage(message);
+    }
 }
 

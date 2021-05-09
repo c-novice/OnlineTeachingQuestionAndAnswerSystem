@@ -31,4 +31,10 @@ public class MessageDaoImpl extends BaseDao implements MessageDao {
         String sql = "update t_message set `checked`= 1 where usernameTo =?";
         return update(sql, username);
     }
+
+    @Override
+    public Integer addMessage(Message message) {
+        String sql = "insert into t_message(`usernameFrom`,`usernameTo`,`context`,`type`,`checked`) values(?,?,?,?,?)";
+        return update(sql, message.getUsernameFrom(), message.getUsernameTo(), message.getContext(), message.getType(), message.getChecked());
+    }
 }

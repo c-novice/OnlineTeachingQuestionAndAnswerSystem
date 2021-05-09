@@ -31,4 +31,10 @@ public interface MessageDao  {
      * @param username
      */
     public Integer setAllMessageRead(String username);
+
+    /**
+     * 新建一条消息
+     * @param message
+     */
+    public Integer addMessage(Message message);
 }

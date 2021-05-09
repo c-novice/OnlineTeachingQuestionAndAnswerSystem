@@ -21,7 +21,21 @@
         }
 
         .STYLE2 {
-            font-size: 12px
+            font-size: 14px
+        }
+
+        .deleteButton {
+            width: 46px;
+            height: 25px;
+            color: #1e1b29;
+
+            background: #cd9c8b;
+        }
+
+        #divFont {
+            font-size: 11px;
+            font-weight: bold;
+            color: white;
         }
 
     </style>
@@ -30,7 +44,8 @@
 <body>
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
     <tr>
-        <td height="25" bgcolor="#1078b5" style="padding-left:15px;"><span class="STYLE1">收件箱</span></td>
+        <td height="25" bgcolor="#5f758d" style="padding-left:15px;"><span class="STYLE1">收件箱</span></td>
+        <%--        <td height="25" bgcolor="#1078b5" style="padding-left:15px;"><span class="STYLE1">收件箱</span></td>--%>
     </tr>
     <tr>
         <td valign="top" style="border:solid 1px #8db6cf;">
@@ -45,17 +60,17 @@
                                     style="padding-left:1px; border-right: solid 1px #6daed6; border-left:solid 1px #e7f4fc;">
                                     <div align="center"><span class="STYLE2"> 发件人</span></div>
                                 </td>
-                                <td width="56%"
+                                <td width="62%"
                                     style="padding-left:1px; border-right: solid 1px #6daed6; border-left:solid 1px #e7f4fc;">
                                     <div align="center"><span class="STYLE2">主题</span></div>
                                 </td>
-                                <td width="12%"
-                                    style="padding-left:1px; border-right: solid 1px #6daed6; border-left:solid 1px #e7f4fc;">
-                                    <div align="center"><span class="STYLE2">时间</span></div>
-                                </td>
-                                <td width="12%"
+                                <td width="10%"
                                     style="padding-left:1px; border-right: solid 1px #6daed6; border-left:solid 1px #e7f4fc;">
                                     <div align="center"><span class="STYLE2">状态</span></div>
+                                </td>
+                                <td width="4%"
+                                    style="padding-left:1px; border-right: solid 1px #6daed6; border-left:solid 1px #e7f4fc;">
+                                    <div align="center"><span class="STYLE2"></span></div>
                                 </td>
                             </tr>
                         </table>
@@ -71,15 +86,16 @@
                                     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                         <tr>
                                             <td width="9%" height="22" style="border-bottom:solid 1px #c3d7e3;">
-                                                <div align="center"><img src="images/ml.gif" width="13" height="12">
+                                                <div align="center"><img src="static/img/ml.gif" width="13" height="12">
                                                 </div>
                                             </td>
-                                            <td width="16%" style="border-bottom:solid 1px #c3d7e3;" class="STYLE2">
-                                                <div align="left"><span class="STYLE2">${message.usernameFrom}</span>
+                                            <td width="11%" style="border-bottom:solid 1px #c3d7e3;" class="STYLE2">
+                                                <div align="center"><span class="STYLE2">${message.usernameFrom}</span>
                                                 </div>
                                             </td>
-                                            <td width="51%" style="border-bottom:solid 1px #c3d7e3;" class="STYLE2">
-                                                <div align="left"><span class="STYLE2">${message.context}</span></div>
+                                            <td width="65%" style="border-bottom:solid 1px #c3d7e3;" class="STYLE2">
+                                                <div align="left"><span class="STYLE2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${message.context}</span>
+                                                </div>
                                             </td>
                                             <td width="12%" style="border-bottom:solid 1px #c3d7e3;" class="STYLE2">
                                                 <c:if test="${message.checked==0}">
@@ -91,8 +107,8 @@
                                             </td>
                                             <td>
                                                 <a href="messageServlet?action=deleteMessage&deleteMessageId=${message.id}">
-                                                    <button type="button" >
-                                                        删除
+                                                    <button type="button" class="deleteButton">
+                                                        <div align="center" id="divFont">删除</div>
                                                     </button>
                                                 </a>
                                             </td>
@@ -104,7 +120,6 @@
                         </table>
                     </td>
                 </tr>
-
             </table>
         </td>
     </tr>
