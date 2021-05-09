@@ -63,7 +63,7 @@ public class UserServlet extends BaseServlet {
      */
     protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 获取请求的参数
-        String autoLogin=req.getParameter("autoLogin");
+        String autoLogin = req.getParameter("autoLogin");
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         // 调用 userService.login()登录处理业务
@@ -74,8 +74,8 @@ public class UserServlet extends BaseServlet {
             req.setAttribute("msg", "用户或密码错误！");
             req.setAttribute("username", username);
             //清空cookie
-            Cookie cookie1=new Cookie("username","");
-            Cookie cookie2=new Cookie("password","");
+            Cookie cookie1 = new Cookie("username", "");
+            Cookie cookie2 = new Cookie("password", "");
             cookie1.setMaxAge(0);
             cookie2.setMaxAge(0);
             resp.addCookie(cookie1);
@@ -87,11 +87,11 @@ public class UserServlet extends BaseServlet {
             // 保存用户登录的信息到Session域中
             req.getSession().setAttribute("user", loginUser);
             //根据用户勾选将信息保存在Cookie中
-            if(autoLogin!=null){
-                Cookie cookie1=new Cookie("username",loginUser.getUsername());
-                Cookie cookie2=new Cookie("password",loginUser.getPassword());
-                cookie1.setMaxAge(60*60*24*7);
-                cookie2.setMaxAge(60*60*24*7);
+            if (autoLogin != null) {
+                Cookie cookie1 = new Cookie("username", loginUser.getUsername());
+                Cookie cookie2 = new Cookie("password", loginUser.getPassword());
+                cookie1.setMaxAge(60 * 60 * 24 * 7);
+                cookie2.setMaxAge(60 * 60 * 24 * 7);
                 resp.addCookie(cookie1);
                 resp.addCookie(cookie2);
             }

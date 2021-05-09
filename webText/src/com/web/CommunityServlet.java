@@ -19,7 +19,7 @@ public class CommunityServlet extends BaseServlet {
 
 
     private final CommunityService communityService = new CommunityServiceImpl();
-    private final MessageService messageService=new MessageServiceImpl() ;
+    private final MessageService messageService = new MessageServiceImpl();
 
     /**
      * 初始化、保存数据和处理分页功能
@@ -70,11 +70,11 @@ public class CommunityServlet extends BaseServlet {
     protected void createAnswer(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //注入对象
         Answer answer = WebUtils.copyParamToBean(req.getParameterMap(), new Answer());
-        String questionName=req.getParameter("questionName");
-        Question question=communityService.getUsernameToByQuestionName(questionName);
+        String questionName = req.getParameter("questionName");
+        Question question = communityService.getUsernameToByQuestionName(questionName);
 
-        Message message=new Message(req.getParameter("username"),question.getUsername(),1);
-        message.setContext("用户"+message.getUsernameFrom()+"回答了您的问题"+questionName);
+        Message message = new Message(req.getParameter("username"), question.getUsername(), 1);
+        message.setContext("用户" + message.getUsernameFrom() + "回答了您的问题" + questionName);
 
         //添加回答
         communityService.addAnswer(req.getParameter("questionName"), answer);

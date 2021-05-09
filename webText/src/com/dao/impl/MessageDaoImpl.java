@@ -22,7 +22,6 @@ public class MessageDaoImpl extends BaseDao implements MessageDao {
     @Override
     public Integer deleteMessageById(Integer id) {
         String sql = "delete from t_message where id = ?";
-        System.out.println(update(sql, id));
         return update(sql, id);
     }
 

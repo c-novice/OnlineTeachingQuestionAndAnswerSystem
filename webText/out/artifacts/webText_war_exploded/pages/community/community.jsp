@@ -20,7 +20,8 @@ background-attachment: fixed;">
         <div>
             <%--如果用户还没有登录，显示 【登录和注册的菜单】 --%>
             <c:if test="${empty sessionScope.user}">
-                <a class="link1" href="pages/user/login.jsp">登录</a> | <a class="link1" href="pages/user/regist.jsp">注册</a> &nbsp;&nbsp;
+                <a class="link1" href="pages/user/login.jsp">登录</a> | <a class="link1"
+                                                                         href="pages/user/regist.jsp">注册</a> &nbsp;&nbsp;
             </c:if>
             <%--如果已经登录，则显示 登录 成功之后的用户信息。--%>
             <c:if test="${not empty sessionScope.user}">
@@ -35,6 +36,7 @@ background-attachment: fixed;">
     <form action="communityServlet">
         <input type="hidden" name="action" value="addQuestion">
         <input id="create_input" type="text" placeholder="请输入你的问题" name="name">
+        <input type="hidden" name="username" value="${sessionScope.user.username}">
         &nbsp;
         <button id="create_btn" type="submit">新建问题</button>
     </form>

@@ -1,12 +1,11 @@
 package com.web;
 
-import com.pojo.Answer;
-import com.pojo.Page;
-import com.pojo.Question;
-import com.pojo.User;
+import com.pojo.*;
 import com.service.CommunityService;
+import com.service.MessageService;
 import com.service.UserService;
 import com.service.impl.CommunityServiceImpl;
+import com.service.impl.MessageServiceImpl;
 import com.service.impl.UserServiceImpl;
 import com.utils.WebUtils;
 
@@ -19,7 +18,7 @@ public class ManagerServlet extends BaseServlet {
 
     private final CommunityService communityService = new CommunityServiceImpl();
     private final UserService userService = new UserServiceImpl();
-
+    private final MessageService messageService = new MessageServiceImpl();
 
     /**
      * 初始化、保存数据和处理分页功能
@@ -116,11 +115,22 @@ public class ManagerServlet extends BaseServlet {
         Integer id = Integer.parseInt(req.getParameter("deleteQuestion"));
         String context = req.getParameter("deleteAnswer");
         String name = req.getParameter("deleteName");
-        //若context为空说明需要删除t_question内容
-        if (context.equals(""))
-            communityService.deleteQuestionById(id);
-        else
-            communityService.deleteAnswerByNameAndContext(name, context);
+
+        //获取usernameFrom
+        String usernameFrom = "amin";
+
+        //获取usernameTo
+        String usernameTo = communityService.getUsernameToByQuestionName(name).getUsername();
+
+        //设置context和type
+        Message message = new Message(usernameFrom, usernameTo, 0);
+        message.setContext("管理员删除了你在问题：" + name + "中的回答:" + context);
+
+        //删除回答
+        communityService.deleteAnswerByNameAndContext(name, context);
+        //发送消息
+        messageService.addAnswerFromCommunity(message);
+
         //重定向
         resp.sendRedirect(req.getContextPath() + "/managerServlet?action=page");
     }
@@ -142,7 +152,7 @@ public class ManagerServlet extends BaseServlet {
         Question preQuestion = communityService.queryQuestionById(id);
         if (!preQuestion.getName().equals(name)) {
             //1、修改t_question
-            communityService.updateQuestion(new Question(id, name,(String) req.getSession().getAttribute("username")));
+            communityService.updateQuestion(new Question(id, name, (String) req.getSession().getAttribute("username")));
         } else {
             //2、修改t_answer
             communityService.addAnswer(name, new Answer("admin", context, 0));

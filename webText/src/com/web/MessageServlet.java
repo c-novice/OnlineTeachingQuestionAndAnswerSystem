@@ -27,7 +27,7 @@ public class MessageServlet extends BaseServlet {
         //1 获取请求的参数 pageNo 和 pageSize
         int pageNo = WebUtils.parseInt(req.getParameter("pageNo"), 1);
         int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE / 2);
-        User user=(User) req.getSession().getAttribute("user");
+        User user = (User) req.getSession().getAttribute("user");
         //2、service层获得当前页的数据
         Page<Message> pageMessages = messageService.page(pageNo, pageSize, user.getUsername());
         pageMessages.setUrl("messageServlet?action=page");

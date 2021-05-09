@@ -123,6 +123,6 @@ public class CommunityServiceImpl implements CommunityService {
 
     @Override
     public Question getUsernameToByQuestionName(String questionName) {
-       return communityDao.queryUsernameToByQuestionName(questionName);
+        return communityDao.queryUsernameToByQuestionName(questionName);
     }
 }

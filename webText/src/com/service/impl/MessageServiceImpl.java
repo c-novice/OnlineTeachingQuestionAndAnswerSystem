@@ -11,7 +11,7 @@ public class MessageServiceImpl implements com.service.MessageService {
     private final MessageDao messageDao = new MessageDaoImpl();
 
     @Override
-    public Page<Message> page(int pageNo, int pageSize,String username) {
+    public Page<Message> page(int pageNo, int pageSize, String username) {
         Page<Message> page = new Page<Message>();
 
         // 设置每页显示的数量
@@ -35,7 +35,7 @@ public class MessageServiceImpl implements com.service.MessageService {
         int begin = (page.getPageNo() - 1) * pageSize;
 
         // 求当前页数据
-        List<Message> items = messageDao.queryForPageItems(begin, pageSize,username);
+        List<Message> items = messageDao.queryForPageItems(begin, pageSize, username);
         //将当前页数据修改为已读
         messageDao.setAllMessageRead(username);
 

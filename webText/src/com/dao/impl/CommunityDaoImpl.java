@@ -77,7 +77,6 @@ public class CommunityDaoImpl extends BaseDao implements CommunityDao {
     @Override
     public Question queryUsernameToByQuestionName(String questionName) {
         String sql = "select * from t_question where name = ?";
-        System.out.println(queryForOne(Question.class, sql, questionName));
         return queryForOne(Question.class, sql, questionName);
     }
 }
