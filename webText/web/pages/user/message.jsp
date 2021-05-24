@@ -5,7 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
     <title>消息界面</title>
     <style type="text/css">
-        <!--
         body {
             margin-left: 4px;
             margin-top: 4px;
@@ -42,7 +41,7 @@
 </head>
 
 <body>
-<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+<table width="100%" height="95%" border="0" cellpadding="0" cellspacing="0">
     <tr>
         <td height="25" bgcolor="#5f758d" style="padding-left:15px;"><span class="STYLE1">收件箱</span></td>
         <%--        <td height="25" bgcolor="#1078b5" style="padding-left:15px;"><span class="STYLE1">收件箱</span></td>--%>
@@ -124,6 +123,8 @@
         </td>
     </tr>
 </table>
+<%--静态包含页脚内容--%>
+<%@include file="/pages/common/footer.jsp" %>
 </body>
 </html>
 

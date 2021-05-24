@@ -29,7 +29,7 @@
         </c:if>
 
         <c:if test="${not empty sessionScope.user}">
-        <li><a href="messageServlet?action=page">消息</a></li>
+            <li><a href="messageServlet?action=page">消息</a></li>
         </c:if>
 
         <c:if test="${sessionScope.user.username=='admin'}">
@@ -73,7 +73,8 @@
                 <div class="nav-text">用户社区</div>
             </a></li>
             <li class="wk_nav-line"></li>
-            <li class="wk_nav-bullet-container" data-index="2"><a class="nav-link" href="javascript:void(0)">
+            <li class="wk_nav-bullet-container" data-index="2"><a class="nav-link"
+                                                                  href="pages/user/question_answer.jsp">
                 <div class="nav-bullet"></div>
                 <div class="nav-text">我的问题/回答</div>
             </a></li>

@@ -85,7 +85,7 @@
 
             <div class="login_form">
                 <div class="login_title">
-                    个人信息
+                    个人信息设置
                 </div>
                 <div class="msg_cont">
                     <span class="errorMsg">

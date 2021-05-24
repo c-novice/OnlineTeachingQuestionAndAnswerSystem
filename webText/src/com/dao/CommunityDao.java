@@ -29,7 +29,7 @@ public interface CommunityDao {
     int deleteAnswerByNameAndContext(String name, String context);
 
     //查询总页数
-    Integer queryForPageTotalCount();
+    Integer queryForPageTotalCount(String name);
 
     //查询当前页下的问题
     List<Question> queryForPageItems(int begin, int pageSize);

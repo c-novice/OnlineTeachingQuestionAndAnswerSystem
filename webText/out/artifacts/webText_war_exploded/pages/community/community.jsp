@@ -26,7 +26,7 @@ background-attachment: fixed;">
             <%--如果已经登录，则显示 登录 成功之后的用户信息。--%>
             <c:if test="${not empty sessionScope.user}">
                 <span>欢迎 ${sessionScope.user.username}</span>
-                <a class="link1" href="userServlet?action=logout">注销</a>
+                <a class="link1" href="pages/mainwindow/mainwindow.jsp">返回首页</a>
             </c:if>
         </div>
     </div>
@@ -34,11 +34,11 @@ background-attachment: fixed;">
 
 <div id="create">
     <form action="communityServlet">
-        <input type="hidden" name="action" value="addQuestion">
-        <input id="create_input" type="text" placeholder="请输入你的问题" name="name">
+        <input type="hidden" name="action" value="searchQuestion">
+        <input id="create_input" type="text" placeholder="请输入你要查询的问题" name="searchName">
         <input type="hidden" name="username" value="${sessionScope.user.username}">
-        &nbsp;
-        <button id="create_btn" type="submit">新建问题</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button id="create_btn" type="submit">查询问题</button>
     </form>
 </div>
 

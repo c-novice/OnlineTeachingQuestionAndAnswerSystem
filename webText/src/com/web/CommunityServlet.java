@@ -1,9 +1,6 @@
 package com.web;
 
-import com.pojo.Answer;
-import com.pojo.Message;
-import com.pojo.Page;
-import com.pojo.Question;
+import com.pojo.*;
 import com.service.CommunityService;
 import com.service.MessageService;
 import com.service.impl.CommunityServiceImpl;
@@ -41,6 +38,7 @@ public class CommunityServlet extends BaseServlet {
         //4 请求转发
         req.getRequestDispatcher("/pages/community/community.jsp").forward(req, resp);
     }
+
 
     /**
      * 新建问题
@@ -92,5 +90,16 @@ public class CommunityServlet extends BaseServlet {
      * @throws ServletException
      * @throws IOException
      */
-
+    protected void searchQuestion(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String searchName = req.getParameter("searchName");       //获取关键词名
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"), 1);
+        int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE / 2);
+        //2 调用CommunityServiceService.page(pageNo，pageSize)：Page对象
+        Page<Question> page = communityService.pageByQuestion(pageNo, pageSize, searchName);
+        page.setUrl("communityServlet?action=searchQuestion&searchName=" + searchName);
+        //3 保存Page对象到Request域中，兼具初始化的功能
+        req.setAttribute("page", page);
+        //4 请求转发
+        req.getRequestDispatcher("/pages/community/community.jsp").forward(req, resp);
+    }
 }

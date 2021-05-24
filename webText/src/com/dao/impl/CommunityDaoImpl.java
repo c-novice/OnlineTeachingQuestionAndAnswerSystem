@@ -56,9 +56,15 @@ public class CommunityDaoImpl extends BaseDao implements CommunityDao {
     }
 
     @Override
-    public Integer queryForPageTotalCount() {
-        String sql = "select count(*) from t_question";
-        Number count = (Number) queryForSingleValue(sql);
+    public Integer queryForPageTotalCount(String name) {
+        Number count;
+        if (name != null) {
+            String sql = "select count(*) from t_question where name like '%' ? '%' ";
+            count = (Number) queryForSingleValue(sql, name);
+        } else {
+            String sql = "select count(*) from t_question";
+            count = (Number) queryForSingleValue(sql);
+        }
         return count.intValue();
     }
 
