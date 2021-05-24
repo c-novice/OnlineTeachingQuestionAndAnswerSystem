@@ -31,7 +31,7 @@
                             <input name="username" type="text" placeholder="账号" value="${cookie.username.value}">
                         </c:if>
                         <c:if test="${not empty requestScope.msg}">
-                        <input name="username" type="text" placeholder="账号" value="${requestScope.username}">
+                            <input name="username" type="text" placeholder="账号" value="${requestScope.username}">
                         </c:if>
                     </div>
                     <div class="ececk_warning"><span>账号不能为空</span></div>

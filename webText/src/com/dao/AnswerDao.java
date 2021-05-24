@@ -49,4 +49,26 @@ public interface AnswerDao {
      * @param id
      */
     Integer deleteQuestionById(Integer id);
+
+    /**
+     * 我的回答数
+     *
+     * @param searchName
+     * @param username
+     * @return
+     */
+    Integer queryForPage2TotalCount(String searchName, String username);
+
+    /**
+     * 查询回答
+     *
+     * @param begin
+     * @param pageSize
+     * @param username
+     * @return
+     */
+    List<Answer> queryForPage2Items(int begin, int pageSize, String username);
+
+    //根据问题名和回答删除一条回答
+    int deleteAnswerByNameAndContext(String name, String context);
 }

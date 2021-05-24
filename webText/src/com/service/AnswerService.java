@@ -1,5 +1,6 @@
 package com.service;
 
+import com.pojo.Answer;
 import com.pojo.Page;
 import com.pojo.Question;
 
@@ -32,4 +33,22 @@ public interface AnswerService {
      * @param id
      */
     void deleteQuestionById(Integer id);
+
+    /**
+     * 处理我的回答的分页和初始化
+     *
+     * @param pageNo
+     * @param pageSize
+     * @param username
+     * @return
+     */
+    Page<Answer> page2(int pageNo, int pageSize, String username);
+
+    /**
+     * 根据name和context删除问题
+     *
+     * @param name
+     * @param context
+     */
+    void deleteAnswerByNameAndContext(String name, String context);
 }

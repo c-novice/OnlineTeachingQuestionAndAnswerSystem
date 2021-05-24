@@ -8,9 +8,6 @@ public class Message {
     private String id;
     private Integer checked = 0;
 
-    public Message() {
-    }
-
     public Message(String usernameFrom, String usernameTo, Integer type) {
         this.usernameFrom = usernameFrom;
         this.usernameTo = usernameTo;
@@ -70,8 +67,8 @@ public class Message {
         return checked;
     }
 
-    public void setChecked(Integer checked){
-        this.checked=checked;
+    public void setChecked(Integer checked) {
+        this.checked = checked;
     }
 
     @Override

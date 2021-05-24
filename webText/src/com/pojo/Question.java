@@ -19,14 +19,14 @@ public class Question {
     }
 
     public Question(String newQuestionName, String username) {
-        this.name=newQuestionName;
-        this.username=username;
+        this.name = newQuestionName;
+        this.username = username;
     }
 
     public Question(Integer id, String name, String username) {
-        this.id=id;
-        this.name=name;
-        this.username=username;
+        this.id = id;
+        this.name = name;
+        this.username = username;
     }
 
     @Override
@@ -65,4 +65,5 @@ public class Question {
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
+
 }

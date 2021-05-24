@@ -1,6 +1,7 @@
 package com.pojo;
 
 public class Answer {
+    private String name;
     private String username;
     private String context;
     private Integer welcomeCount = 0;
@@ -29,10 +30,20 @@ public class Answer {
         this.welcomeCount = welcomeCount;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String questionName) {
+        this.name = questionName;
+    }
+
+
     @Override
     public String toString() {
         return "Answer{" +
-                "username='" + username + '\'' +
+                "name='" + name + '\'' +
+                ", username='" + username + '\'' +
                 ", context='" + context + '\'' +
                 ", welcomeCount=" + welcomeCount +
                 '}';
@@ -42,9 +53,11 @@ public class Answer {
 
     }
 
-    public Answer(String username, String context) {
+    public Answer(String name, String username, String context, Integer welcomeCount) {
+        this.name = name;
         this.username = username;
         this.context = context;
+        this.welcomeCount = welcomeCount;
     }
 
     public Answer(String username, String context, Integer welcomeCount) {

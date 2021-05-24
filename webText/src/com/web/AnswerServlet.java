@@ -1,9 +1,6 @@
 package com.web;
 
-import com.pojo.Message;
-import com.pojo.Page;
-import com.pojo.Question;
-import com.pojo.User;
+import com.pojo.*;
 import com.service.AnswerService;
 import com.service.MessageService;
 import com.service.impl.AnswerServiceImpl;
@@ -30,13 +27,15 @@ public class AnswerServlet extends BaseServlet {
     protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1 获取请求的参数 pageNo 和 pageSize
         int pageNo = WebUtils.parseInt(req.getParameter("pageNo"), 1);
-        int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
+        int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE / 2);
         User user = (User) req.getSession().getAttribute("user");
         //2 调用CommunityServiceService.page(pageNo，pageSize)：Page对象
         Page<Question> page = answerService.page(pageNo, pageSize, user.getUsername());
+        Page<Answer> userAnswers = answerService.page2(pageNo, Integer.MAX_VALUE, user.getUsername());
         page.setUrl("answerServlet?action=page");
         //3 保存Page对象到Request域中，兼具初始化的功能
         req.setAttribute("page", page);
+        req.setAttribute("userAnswers", userAnswers);
         //4 请求转发
         req.getRequestDispatcher("/pages/user/question_answer.jsp").forward(req, resp);
     }
@@ -79,12 +78,38 @@ public class AnswerServlet extends BaseServlet {
         Integer id = Integer.parseInt(req.getParameter("deleteQuestionId"));
 
         //设置context和type
-        Message message = new Message(username, username, 0);
+        Message message = new Message("admin", username, 0);
         message.setContext("你自己删除了你的问题 : " + req.getParameter("deleteContext"));
 
         //删除问题
         answerService.deleteQuestionById(id);
 
+        //发送消息
+        messageService.addAnswerFromCommunity(message);
+
+        //重定向
+        resp.sendRedirect(req.getContextPath() + "/answerServlet?action=page");
+    }
+
+    /**
+     * 删除一个回答
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void deleteAnswer(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String context = req.getParameter("deleteAnswer");
+        String name = req.getParameter("deleteQuestion");
+        User user = (User) req.getSession().getAttribute("user");
+
+        //设置context和type
+        Message message = new Message("admin", user.getUsername(), 0);
+        message.setContext("你删除了自己在问题 : " + name + "中的回答 : " + context);
+
+        //删除回答
+        answerService.deleteAnswerByNameAndContext(name, context);
         //发送消息
         messageService.addAnswerFromCommunity(message);
 

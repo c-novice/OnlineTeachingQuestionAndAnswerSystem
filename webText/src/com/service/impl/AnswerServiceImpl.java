@@ -2,6 +2,7 @@ package com.service.impl;
 
 import com.dao.AnswerDao;
 import com.dao.impl.AnswerDaoImpl;
+import com.pojo.Answer;
 import com.pojo.Page;
 import com.pojo.Question;
 import com.service.AnswerService;
@@ -86,5 +87,42 @@ public class AnswerServiceImpl implements AnswerService {
     @Override
     public void deleteQuestionById(Integer id) {
         answerDao.deleteQuestionById(id);
+    }
+
+    @Override
+    public Page<Answer> page2(int pageNo, int pageSize, String username) {
+        Page<Answer> page = new Page<Answer>();
+
+        // 设置每页显示的数量
+        page.setPageSize(pageSize);
+        // 求总记录数
+        Integer pageTotalCount = answerDao.queryForPage2TotalCount(null, username);
+        // 设置总记录数
+        page.setPageTotalCount(pageTotalCount);
+        // 求总页码
+        Integer pageTotal = pageTotalCount / pageSize;
+        if (pageTotalCount % pageSize > 0) {
+            pageTotal += 1;
+        }
+        // 设置总页码
+        page.setPageTotal(pageTotal);
+
+        // 设置当前页码
+        page.setPageNo(pageNo);
+
+        // 求当前页数据的开始索引
+        int begin = (page.getPageNo() - 1) * pageSize;
+
+        // 求当前页数据
+        List<Answer> items = answerDao.queryForPage2Items(begin, pageSize, username);
+
+        // 设置当前页数据
+        page.setItems(items);
+        return page;
+    }
+
+    @Override
+    public void deleteAnswerByNameAndContext(String name, String context) {
+        answerDao.deleteAnswerByNameAndContext(name, context);
     }
 }

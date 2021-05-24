@@ -96,7 +96,7 @@ public class ManagerServlet extends BaseServlet {
      */
     protected void addQuestion(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取新问题的名字
-        User user=(User) req.getSession().getAttribute("user");
+        User user = (User) req.getSession().getAttribute("user");
         Question newQuestion = new Question(req.getParameter("newQuestionName"), user.getUsername());
         //调用service层add方法
         communityService.addQuestion(newQuestion);

@@ -142,25 +142,11 @@
                 </div>
             </div>
 
-
             <!--我的回答模块-->
             <div role="tabpanel" class="tab-pane" id="user">
-                <div class="check-div form-inline">
-                    <div class="col-xs-4">
-                        <form action="userServlet">
-                            <input type="hidden" name="action" value="searchQuestionName">
-                            <input type="text" class="form-control input-sm" placeholder="输入要查询的问题名"
-                                   name="searchName">
-                            <button class="btn btn-white btn-xs " type="submit">查 询</button>
-                        </form>
-                    </div>
-                </div>
                 <div class="data-div">
                     <div class="row tableHeader">
-                        <div class="col-xs-2">
-                            id
-                        </div>
-                        <div class="col-xs-2">
+                        <div class="col-xs-4">
                             问题
                         </div>
                         <div class="col-xs-6">
@@ -171,29 +157,23 @@
                         </div>
                     </div>
                     <div class="tablebody">
-                        <%--                        <c:forEach items="${requestScope.pageUsers.items}" var="user">--%>
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                123
-                                <%--                                        ${answer.id}--%>
+                        <c:forEach items="${requestScope.userAnswers.items}" var="answer2">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        ${answer2.name}
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        ${answer2.context}
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <a href="answerServlet?action=deleteAnswer&deleteQuestion=${answer2.name}&deleteAnswer=${answer2.context}">
+                                        <button class="btn btn-danger btn-xs" type="button">
+                                            删除
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                java
-                                <%--                                        ${question.name}--%>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                ok
-                                <%--                                        ${question.answer}--%>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <a href="answerServlet?action=deleteAnswer&deleteAnswerId=${Answer.id}">
-                                    <button class="btn btn-danger btn-xs" type="button">
-                                        删除
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-
+                        </c:forEach>
                     </div>
                 </div>
             </div>

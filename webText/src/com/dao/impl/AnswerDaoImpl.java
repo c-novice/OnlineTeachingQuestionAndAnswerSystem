@@ -43,4 +43,29 @@ public class AnswerDaoImpl extends BaseDao implements AnswerDao {
         String sql = "delete from t_question where id = ?";
         return update(sql, id);
     }
+
+    @Override
+    public Integer queryForPage2TotalCount(String searchName, String username) {
+        Number count;
+        if (searchName == null) {
+            String sql = "select count(*) from t_answer where username = ?";
+            count = (Number) queryForSingleValue(sql, username);
+        } else {
+            String sql = "select count(*) from t_answer where username = ? and name like '%' ? '%' ";
+            count = (Number) queryForSingleValue(sql, username, searchName);
+        }
+        return count.intValue();
+    }
+
+    @Override
+    public List<Answer> queryForPage2Items(int begin, int pageSize, String username) {
+        String sql = "select *  from t_answer where username = ? limit ?,?";
+        return queryForList(Answer.class, sql, username, begin, pageSize);
+    }
+
+    @Override
+    public int deleteAnswerByNameAndContext(String name, String context) {
+        String sql = "delete from t_answer where name = ? and context = ?";
+        return update(sql, name, context);
+    }
 }
