@@ -73,8 +73,7 @@
                 <div class="nav-text">用户社区</div>
             </a></li>
             <li class="wk_nav-line"></li>
-            <li class="wk_nav-bullet-container" data-index="2"><a class="nav-link"
-                                                                  href="pages/user/question_answer.jsp">
+            <li class="wk_nav-bullet-container" data-index="2"><a class="nav-link" href="answerServlet?action=page">
                 <div class="nav-bullet"></div>
                 <div class="nav-text">我的问题/回答</div>
             </a></li>

@@ -191,6 +191,7 @@
                 </div>
                 <!--页码块-->
                 <%@include file="/pages/common/page_manager_nav.jsp" %>
+                <br>
             </div>
 
             <!--弹出窗口 添加资源-->

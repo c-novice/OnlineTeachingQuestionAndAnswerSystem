@@ -42,4 +42,5 @@ public interface UserService {
 
     //查询用户名
     Page<User> pageByUsername(int pageNo, int pageSize, String searchName);
+
 }

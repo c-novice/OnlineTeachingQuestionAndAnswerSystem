@@ -148,4 +148,5 @@ public class UserServlet extends BaseServlet {
             req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
         }
     }
+
 }

@@ -19,7 +19,7 @@
         <div class="wrapper">
             <div class="coming-61-w3l-vv-top">
                 <div class="coming-61-w3l-vv-info">
-                    <h1>Lightweight Search Engine</h1>
+                    <h1>专为计算机学科创建的搜索引擎</h1>
 
                     <form action="#" method="GET" class="d-flex coming-form">
                         <input type="text" placeholder="Enter Your Question" required="required">

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%--分页条的开始--%>
-<div id="page_nav">
+<div id="page_nav" style>
     <%--大于首页，才显示--%>
     <c:if test="${requestScope.page.pageNo > 1}">
         <a href="${ requestScope.page.url }&pageNo=1">首页</a>

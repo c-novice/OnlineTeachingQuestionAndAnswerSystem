@@ -49,10 +49,11 @@ public class CommunityServlet extends BaseServlet {
      * @throws IOException
      */
     protected void addQuestion(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //注入对象
-        Question question = WebUtils.copyParamToBean(req.getParameterMap(), new Question());
-        //添加问题
-        communityService.addQuestion(question);
+        //获取新问题的名字
+        User user = (User) req.getSession().getAttribute("user");
+        Question newQuestion = new Question(req.getParameter("newQuestionName"), user.getUsername());
+        //调用service层add方法
+        communityService.addQuestion(newQuestion);
         //重定向
         resp.sendRedirect(req.getContextPath() + "/communityServlet?action=page");
     }

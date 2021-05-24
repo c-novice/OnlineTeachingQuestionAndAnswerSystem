@@ -1,46 +1,24 @@
 package com.service.impl;
 
-import com.dao.UserDao;
-import com.dao.impl.UserDaoImpl;
+import com.dao.AnswerDao;
+import com.dao.impl.AnswerDaoImpl;
 import com.pojo.Page;
-import com.pojo.User;
-import com.service.UserService;
+import com.pojo.Question;
+import com.service.AnswerService;
 
 import java.util.List;
 
-public class UserServiceImpl implements UserService {
-
-    private final UserDao userDao = new UserDaoImpl();
-
-    @Override
-    public void registUser(User user) {
-        userDao.saveUser(user);
-    }
+public class AnswerServiceImpl implements AnswerService {
+    private final AnswerDao answerDao = new AnswerDaoImpl();
 
     @Override
-    public User login(User user) {
-        return userDao.queryUserByUsernameAndPassword(user.getUsername(), user.getPassword());
-    }
-
-    @Override
-    public boolean existsUsername(String username) {
-
-        return userDao.queryUserByUsername(username) != null;
-    }
-
-    @Override
-    public void updateUser(User user) {
-        userDao.updateUser(user);
-    }
-
-    @Override
-    public Page<User> page(int pageNo, int pageSize) {
-        Page<User> page = new Page<User>();
+    public Page<Question> page(int pageNo, int pageSize, String username) {
+        Page<Question> page = new Page<Question>();
 
         // 设置每页显示的数量
         page.setPageSize(pageSize);
         // 求总记录数
-        Integer pageTotalCount = userDao.queryForPageTotalCount();
+        Integer pageTotalCount = answerDao.queryForPageTotalCount(null, username);
         // 设置总记录数
         page.setPageTotalCount(pageTotalCount);
         // 求总页码
@@ -58,7 +36,11 @@ public class UserServiceImpl implements UserService {
         int begin = (page.getPageNo() - 1) * pageSize;
 
         // 求当前页数据
-        List<User> items = userDao.queryForPageItems(begin, pageSize);
+        List<Question> items = answerDao.queryForPageItems(begin, pageSize, username);
+
+        for (Question item : items) {
+            item.setAnswers(answerDao.queryAnswerByName(item.getName()));
+        }
 
         // 设置当前页数据
         page.setItems(items);
@@ -66,18 +48,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUserById(Integer id) {
-        userDao.deleteUserById(id);
-    }
-
-    @Override
-    public Page<User> pageByUsername(int pageNo, int pageSize, String searchName) {
-        Page<User> page = new Page<User>();
+    public Page<Question> pageByQuestion(int pageNo, int pageSize, String searchName, String username) {
+        Page<Question> page = new Page<Question>();
 
         // 设置每页显示的数量
         page.setPageSize(pageSize);
         // 求总记录数
-        Integer pageTotalCount = userDao.queryForPageTotalCount();
+        Integer pageTotalCount = answerDao.queryForPageTotalCount(searchName, username);
         // 设置总记录数
         page.setPageTotalCount(pageTotalCount);
         // 求总页码
@@ -95,11 +72,19 @@ public class UserServiceImpl implements UserService {
         int begin = (page.getPageNo() - 1) * pageSize;
 
         // 求当前页数据
-        List<User> items = userDao.queryForPageItemsBySearchName(begin, pageSize, searchName);
+        List<Question> items = answerDao.queryForPageItemsBySearchName(begin, pageSize, searchName, username);
+
+        for (Question item : items) {
+            item.setAnswers(answerDao.queryAnswerByName(item.getName()));
+        }
 
         // 设置当前页数据
         page.setItems(items);
         return page;
     }
 
+    @Override
+    public void deleteQuestionById(Integer id) {
+        answerDao.deleteQuestionById(id);
+    }
 }

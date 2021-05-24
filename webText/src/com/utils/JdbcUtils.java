@@ -31,7 +31,7 @@ public class JdbcUtils {
     /**
      * 获取数据库连接池中的连接
      *
-     * @return 如果返回null, 说明获取连接失败<br />有值就是获取连接成功
+     * @return 如果返回null, 说明获取连接失败有值就是获取连接成功
      */
     public static Connection getConnection() {
 

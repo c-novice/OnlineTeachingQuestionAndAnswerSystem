@@ -96,7 +96,8 @@ public class ManagerServlet extends BaseServlet {
      */
     protected void addQuestion(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取新问题的名字
-        Question newQuestion = new Question(req.getParameter("newQuestionName"), (String) req.getSession().getAttribute("username"));
+        User user=(User) req.getSession().getAttribute("user");
+        Question newQuestion = new Question(req.getParameter("newQuestionName"), user.getUsername());
         //调用service层add方法
         communityService.addQuestion(newQuestion);
         //重定向
@@ -117,7 +118,7 @@ public class ManagerServlet extends BaseServlet {
         String name = req.getParameter("deleteName");
 
         //获取usernameFrom
-        String usernameFrom = "amin";
+        String usernameFrom = "admin";
 
         //获取usernameTo
         String usernameTo = communityService.getUsernameToByQuestionName(name).getUsername();

@@ -25,7 +25,7 @@ background-attachment: fixed;">
             </c:if>
             <%--如果已经登录，则显示 登录 成功之后的用户信息。--%>
             <c:if test="${not empty sessionScope.user}">
-                <span>欢迎 ${sessionScope.user.username}</span>
+                <div>欢迎 ${sessionScope.user.username}&nbsp;&nbsp;</div>
                 <a class="link1" href="pages/mainwindow/mainwindow.jsp">返回首页</a>
             </c:if>
         </div>
@@ -42,6 +42,47 @@ background-attachment: fixed;">
     </form>
 </div>
 
+<c:if test="${not empty sessionScope.user}">
+    <div style="text-align:center">没有感兴趣的内容？试试
+        <button style="font-size: 14px" data-toggle="modal" data-target="#addSource">新建问题</button>
+    </div>
+</c:if>
+
+<!--弹出窗口 添加资源-->
+<div class="modal fade" id="addSource" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新建问题</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="form-horizontal" action="communityServlet" method="post">
+                        <input type="hidden" name="action" value="addQuestion"/>
+                        <div class="form-group ">
+                            <label class="col-xs-3 control-label">问题：</label>
+                            <div class="col-xs-8 ">
+                                <input name="newQuestionName" class="form-control input-sm duiqi"/>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-xs btn-xs btn-white"
+                                    data-dismiss="modal">取 消
+                            </button>
+                            <button type="submit" class="btn btn-xs btn-xs btn-green">保 存</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<br>
 <ul>
     <br>
     <c:forEach items="${requestScope.page.items}" var="question">

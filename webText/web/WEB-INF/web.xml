@@ -4,6 +4,14 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <servlet>
+        <servlet-name>answerServlet</servlet-name>
+        <servlet-class>com.web.AnswerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>answerServlet</servlet-name>
+        <url-pattern>/answerServlet</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>userServlet</servlet-name>
