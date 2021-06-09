@@ -127,7 +127,7 @@
                         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                             id
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                             问题
                         </div>
                         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
@@ -149,11 +149,11 @@
                                     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                             ${question.id}
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             ${question.name}
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                                            ${requestScope.context}
+
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                         <a href="managerServlet?action=deleteQuestion&deleteAnswer=&deleteQuestion=${question.id}&deleteName=${question.name}">
@@ -168,13 +168,13 @@
                         <c:if test="${not empty question.answers}">
                             <c:forEach items="${question.answers}" var="answer">
                                 <div class="row">
-                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="font-size: 1px">
                                             ${question.id}
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="font-size: 1px">
                                             ${question.name}
                                     </div>
-                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="font-size: 1px">
                                             ${answer.context}
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">

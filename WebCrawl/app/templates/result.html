@@ -1,0 +1,112 @@
+{% extends "search.html" %}
+{% block content %}
+<style type="text/css">
+    ul.pagination {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul.pagination li {
+        display: inline;
+    }
+
+    ul.pagination li a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+    ul.pagination li a.active {
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 5px;
+    }
+
+    ul.pagination li a:hover:not(.active) {
+        background-color: #ddd;
+    }
+
+    #searchkey {
+        position: relative;
+        top: 10px;
+        left: 60px;
+        height: 40px;
+        width: 400px;
+    }
+
+    #submit {
+        position: relative;
+        top: 10px;
+        left: 60px;
+        height: 40px;
+        width: 100px;
+    }
+
+    .option {
+        position: relative;
+        top: 250px;
+        left: 60px;
+        /*display: inline;*/
+    }
+
+    .warning {
+        position: relative;
+        top: 10px;
+        left: 60px;
+    }
+
+    .result {
+        position: relative;
+        top: 10px;
+        left: 70px;
+    }
+
+</style>
+
+
+<meta charset="UTF-8">
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.searchkey(size=50) }} {{ form.submit() }}
+    <div class="warning">
+        {% for error in form.searchkey.errors %}
+        <span style="color:#ff0000;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+    </p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    {% for option in option_form.option %}
+    <td>
+        <tr>
+            <td>{{ option }}</td>
+            <td>{{ option.label }}</td>
+        </tr>
+        {% endfor %}
+    </td>
+</form>
+
+<div class="result">
+    {%for res in ress %}
+    <div><a href="{{res.link}} " target="_blank"><b>{{res.title}}</b> </a>
+        <p>
+            {{res.link}}
+        </p>
+    </div>
+
+    {%endfor%}
+
+    <ul class="pagination">
+        {%for i in pageNum%}
+        {%for j in options%}
+        <li><a href="{{url_for('result',webName=j,page=i)}}">{{i}}</a></li>
+        {%endfor%}
+        {%endfor%}
+
+    </ul>
+</div>
+
+{% endblock %}

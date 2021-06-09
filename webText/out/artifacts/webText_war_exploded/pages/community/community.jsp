@@ -94,12 +94,10 @@ background-attachment: fixed;">
         <li type="none">
             <div id="collapse${question.id}" class="panel-collapse collapse">
                 <c:forEach items="${question.answers}" var="answer">
-                    <div id="answer_frame">
                         <div id="answer">
-                                ${answer.username}:${answer.context}<br>
+                                ${answer.username}:${answer.context}<br><br>
                         </div>
 
-                    </div>
                 </c:forEach>
                 <br>
                 <c:if test="${not empty sessionScope.user}">

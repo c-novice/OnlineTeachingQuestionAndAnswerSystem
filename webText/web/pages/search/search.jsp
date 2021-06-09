@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <%-- 静态包含 base标签、css样式、jQuery文件 --%>
-    <%@ include file="/pages/common/head_search.jsp" %>
+    <link type="text/css" rel="stylesheet" href="../../static/css/style3.css">
 </head>
 
 <body>
@@ -21,7 +20,7 @@
                 <div class="coming-61-w3l-vv-info">
                     <h1>专为计算机学科创建的搜索引擎</h1>
 
-                    <form action="#" method="GET" class="d-flex coming-form">
+                    <form action="https://baidu.com" method="GET" class="d-flex coming-form">
                         <input type="text" placeholder="Enter Your Question" required="required">
                         <button type="submit">Go</button>
                     </form>

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{%block content%}
+<title>search</title>
+
+<style type="text/css">
+    #searchkey {
+        position: relative;
+        top: 180px;
+        left: 250px;
+        height: 40px;
+        width: 500px;
+    }
+
+    #submit {
+        position: relative;
+        top: 180px;
+        left: 280px;
+        height: 40px;
+        width: 100px;
+    }
+
+    .option {
+        position: relative;
+        top: 250px;
+        left: 260px;
+        /*display: inline;*/
+    }
+
+    .warning {
+        position: relative;
+        top: 170px;
+        left: 250px;
+
+    }
+</style>
+
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.searchkey(size=30) }}
+        {{ form.submit() }}
+    <div class="warning">
+        {% for error in form.searchkey.errors %}
+        <span style="color:red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+
+    <div class="warning">
+        {% for option in option_form.option %}
+        <tr>
+            <td>{{ option }}</td>
+            <td>{{ option.label }}</td>
+        </tr>
+        {% endfor %}
+    </div>
+    </p>
+
+</form>
+
+
+{%endblock%}
+

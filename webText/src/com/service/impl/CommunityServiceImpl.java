@@ -77,7 +77,14 @@ public class CommunityServiceImpl implements CommunityService {
         List<Question> items = communityDao.queryForPageItems(begin, pageSize);
 
         for (Question item : items) {
-            item.setAnswers(communityDao.queryAnswerByName(item.getName()));
+            List<Answer> answers = communityDao.queryAnswerByName(item.getName());
+            for (Answer answer : answers) {
+                if (answer.getContext().length() > 30) {
+                    answer.setContext(answer.getContext().substring(0, 30) + "...");
+                }
+            }
+            if (item.getName().length() > 20) item.setName(item.getName().substring(0, 20) + "...");
+            item.setAnswers(answers);
         }
 
         // 设置当前页数据
